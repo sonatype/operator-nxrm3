@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sonatypenxrm-operator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: sonatypenxrm-operator
+  template:
+    metadata:
+      labels:
+        name: sonatypenxrm-operator
+    spec:
+      serviceAccountName: sonatypenxrm-operator
+      containers:
+        - name: sonatypenxrm-operator
+          # Replace this with the built image name
+          image: REPLACE_IMAGE
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "sonatypenxrm-operator"
+            - name: RELATED_IMAGE_NEXUS
+              value: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.20.1-01-ubi-3

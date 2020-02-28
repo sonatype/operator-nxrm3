@@ -1,0 +1,4 @@
+packageName: sonatypenxrm-operator
+channels:
+  - name: alpha
+    currentCSV: sonatypenxrm-operator.v0.0.0
