@@ -1,0 +1,5 @@
+---
+- version: v1alpha1
+  group: apm.nxrm.com
+  kind: Nxrm
+  chart: helm-charts/sonatype-nexus
