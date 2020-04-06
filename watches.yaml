@@ -3,3 +3,5 @@
   group: apm.nxrm.com
   kind: Nxrm
   chart: helm-charts/sonatype-nexus
+  overrideValues:
+    nexus.imageName: $RELATED_IMAGE_NEXUS
