@@ -4,7 +4,7 @@ metadata:
   name: example-nxrm
 spec:
   # Default values copied from <project_dir>/helm-charts/sonatype-nexus/values.yaml
-  
+
   config:
     data: null
     enabled: false
@@ -38,10 +38,9 @@ spec:
     - name: NEXUS_SECURITY_RANDOMPASSWORD
       value: "false"
     hostAliases: []
-    imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager
+    imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.22.0-ubi-1
     imagePullPolicy: IfNotPresent
     imagePullSecret: ""
-    imageTag: 3.21.1-01-ubi-23
     livenessProbe:
       failureThreshold: 6
       initialDelaySeconds: 30
@@ -90,4 +89,4 @@ spec:
   statefulset:
     enabled: false
   tolerations: []
-  
+

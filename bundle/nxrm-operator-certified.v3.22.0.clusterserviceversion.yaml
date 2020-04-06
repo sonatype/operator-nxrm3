@@ -54,10 +54,9 @@ metadata:
                 }
               ],
               "hostAliases": [],
-              "imageName": "registry.connect.redhat.com/sonatype/nexus-repository-manager",
+              "imageName": "registry.connect.redhat.com/sonatype/nexus-repository-manager:3.22.0-ubi-1",
               "imagePullPolicy": "IfNotPresent",
               "imagePullSecret": "",
-              "imageTag": "3.21.1-01-ubi-23",
               "livenessProbe": {
                 "failureThreshold": 6,
                 "initialDelaySeconds": 30,
@@ -128,7 +127,7 @@ metadata:
     description: Sonatype Nexus is an open source repository manager
     containerImage: quay.io/jflinchbaugh/nxrm-operator-certified
     repository: https://github.com/sonatype/operator-nxrm3
-  name: nxrm-operator-certified.v3.22.0-1
+  name: nxrm-operator-certified.v3.22.0
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -269,4 +268,4 @@ spec:
   provider:
   - name: Sonatype
   replaces: nxrm-operator-certified.v0.0.0
-  version: 3.22.0-1
+  version: 3.22.0
