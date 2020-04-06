@@ -1,0 +1,5 @@
+channels:
+- currentCSV: nxrm-operator-certified.v3.22.0-1
+  name: alpha
+defaultChannel: alpha
+packageName: nxrm-operator-certified
