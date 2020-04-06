@@ -1,0 +1,272 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: ClusterServiceVersion
+metadata:
+  annotations:
+    alm-examples: |-
+      [
+        {
+          "apiVersion": "apm.nxrm.com/v1alpha1",
+          "kind": "Nxrm",
+          "metadata": {
+            "name": "example-nxrm"
+          },
+          "spec": {
+            "config": {
+              "data": null,
+              "enabled": false,
+              "mountPath": "/sonatype-nexus-conf"
+            },
+            "deployment": {
+              "additionalContainers": null,
+              "additionalVolumeMounts": null,
+              "additionalVolumes": null,
+              "annotations": {},
+              "initContainers": null,
+              "postStart": {
+                "command": null
+              },
+              "preStart": {
+                "command": null
+              },
+              "terminationGracePeriodSeconds": 120
+            },
+            "deploymentStrategy": {},
+            "ingress": {
+              "annotations": {},
+              "enabled": false,
+              "path": "/",
+              "rules": null,
+              "tls": {
+                "enabled": true,
+                "secretName": "nexus-tls"
+              }
+            },
+            "nexus": {
+              "dockerPort": 5003,
+              "env": [
+                {
+                  "name": "install4jAddVmParams",
+                  "value": "-Xms1200M -Xmx1200M -XX:MaxDirectMemorySize=2G -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+                },
+                {
+                  "name": "NEXUS_SECURITY_RANDOMPASSWORD",
+                  "value": "false"
+                }
+              ],
+              "hostAliases": [],
+              "imageName": "registry.connect.redhat.com/sonatype/nexus-repository-manager",
+              "imagePullPolicy": "IfNotPresent",
+              "imagePullSecret": "",
+              "imageTag": "3.21.1-01-ubi-23",
+              "livenessProbe": {
+                "failureThreshold": 6,
+                "initialDelaySeconds": 30,
+                "path": "/",
+                "periodSeconds": 30
+              },
+              "nexusPort": 8081,
+              "podAnnotations": {},
+              "readinessProbe": {
+                "failureThreshold": 6,
+                "initialDelaySeconds": 30,
+                "path": "/",
+                "periodSeconds": 30
+              },
+              "resources": {},
+              "securityContext": {
+                "fsGroup": 2000
+              },
+              "service": {
+                "type": "NodePort"
+              }
+            },
+            "nexusProxyRoute": {
+              "annotations": null,
+              "enabled": false,
+              "labels": null
+            },
+            "persistence": {
+              "accessMode": "ReadWriteOnce",
+              "enabled": true,
+              "storageSize": "8Gi"
+            },
+            "replicaCount": 1,
+            "route": {
+              "annotations": null,
+              "enabled": false,
+              "labels": null,
+              "name": "docker",
+              "portName": "docker"
+            },
+            "secret": {
+              "data": null,
+              "enabled": false,
+              "mountPath": "/etc/secret-volume",
+              "readOnly": true
+            },
+            "service": {
+              "annotations": {},
+              "enabled": false,
+              "labels": {},
+              "ports": [
+                {
+                  "name": "nexus-service",
+                  "port": 80,
+                  "targetPort": 80
+                }
+              ]
+            },
+            "statefulset": {
+              "enabled": false
+            },
+            "tolerations": []
+          }
+        }
+      ]
+    capabilities: Basic Install
+    categories: "Integration & Delivery"
+    description: Sonatype Nexus is an open source repository manager
+    containerImage: quay.io/jflinchbaugh/nxrm-operator-certified
+    repository: https://github.com/sonatype/operator-nxrm3
+  name: nxrm-operator-certified.v3.22.0-1
+  namespace: placeholder
+spec:
+  apiservicedefinitions: {}
+  customresourcedefinitions: {}
+  description: Sonatype Nexus is an open source repository manager
+  displayName: NXRM Operator Certified
+  icon:
+  - base64data: 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
+    mediatype: "image/png"
+  install:
+    spec:
+      deployments:
+      - name: nxrm-operator-certified
+        spec:
+          replicas: 1
+          selector:
+            matchLabels:
+              name: nxrm-operator-certified
+          strategy: {}
+          template:
+            metadata:
+              labels:
+                name: nxrm-operator-certified
+            spec:
+              containers:
+              - env:
+                - name: WATCH_NAMESPACE
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.annotations['olm.targetNamespaces']
+                - name: POD_NAME
+                  valueFrom:
+                    fieldRef:
+                      fieldPath: metadata.name
+                - name: OPERATOR_NAME
+                  value: nxrm-operator-certified
+                - name: RELATED_IMAGE_NEXUS
+                  value: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.22.0-ubi-1
+                image: REPLACE_IMAGE
+                imagePullPolicy: Always
+                name: nxrm-operator-certified
+                resources: {}
+              serviceAccountName: nxrm-operator-certified
+      permissions:
+      - rules:
+        - apiGroups:
+          - ""
+          resources:
+          - namespaces
+          verbs:
+          - get
+        - apiGroups:
+          - ""
+          resources:
+          - configmaps
+          - secrets
+          verbs:
+          - '*'
+        - apiGroups:
+          - ""
+          resources:
+          - events
+          verbs:
+          - create
+        - apiGroups:
+          - ""
+          resources:
+          - persistentvolumeclaims
+          verbs:
+          - '*'
+        - apiGroups:
+          - apps
+          resources:
+          - deployments
+          verbs:
+          - '*'
+        - apiGroups:
+          - monitoring.coreos.com
+          resources:
+          - servicemonitors
+          verbs:
+          - get
+          - create
+        - apiGroups:
+          - apps
+          resourceNames:
+          - nxrm-operator-certified
+          resources:
+          - deployments/finalizers
+          verbs:
+          - update
+        - apiGroups:
+          - ""
+          resources:
+          - pods
+          verbs:
+          - get
+        - apiGroups:
+          - apps
+          resources:
+          - replicasets
+          - deployments
+          verbs:
+          - get
+        - apiGroups:
+          - apm.nxrm.com
+          resources:
+          - '*'
+          verbs:
+          - create
+          - delete
+          - get
+          - list
+          - patch
+          - update
+          - watch
+        serviceAccountName: nxrm-operator-certified
+    strategy: deployment
+  installModes:
+  - supported: true
+    type: OwnNamespace
+  - supported: true
+    type: SingleNamespace
+  - supported: false
+    type: MultiNamespace
+  - supported: true
+    type: AllNamespaces
+  keywords:
+  - repository
+  - sonatype
+  links:
+  - name: Nexus Repository Manager
+    url: https://www.sonatype.com/nexus-repository-oss
+  maintainers:
+  - email: cloud-ops@sonatype.com
+    name: Sonatype Cloud Ops
+  maturity: alpha
+  provider:
+  - name: Sonatype
+  replaces: nxrm-operator-certified.v0.0.0
+  version: 3.22.0-1
