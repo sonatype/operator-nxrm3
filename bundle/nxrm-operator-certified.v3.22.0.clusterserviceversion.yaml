@@ -270,6 +270,6 @@ spec:
     name: Sonatype Cloud Ops
   maturity: alpha
   provider:
-  - name: Sonatype
+    name: Sonatype
   replaces: nxrm-operator-certified.v0.0.0
   version: 3.22.0
