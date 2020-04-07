@@ -12,5 +12,8 @@ Kubernetes or OpenShift cluster.
 2. Install all the descriptors for the operator to your Kubernetes/OpenShift 
    cluster:
   a. `scripts/install.sh`
+3. Expose the new NXRM outside the cluster: 
+  a. `kubectl expose deployment --type=NodePort example-nxrm-sonatype-nexus`
+  b. Create a Route in OpenShift to the new service, port 8081.
   
 To uninstall all the descriptors for the operator, run `scripts/uninstall.sh`.
