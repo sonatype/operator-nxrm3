@@ -4,6 +4,7 @@ metadata:
   name: nxrms.apm.nxrm.com
 spec:
   group: apm.nxrm.com
+  version: 3.22.0
   names:
     kind: Nxrm
     listKind: NxrmList

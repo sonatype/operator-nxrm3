@@ -127,11 +127,15 @@ metadata:
     description: Sonatype Nexus is an open source repository manager
     containerImage: quay.io/jflinchbaugh/nxrm-operator-certified
     repository: https://github.com/sonatype/operator-nxrm3
+    createdAt: 2020-04-07
+    support: Sonatype
+    certified: "true"
   name: nxrm-operator-certified.v3.22.0
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
-  customresourcedefinitions: {}
+  customresourcedefinitions:
+    owned: {}
   description: Sonatype Nexus is an open source repository manager
   displayName: NXRM Operator Certified
   icon:
