@@ -57,7 +57,7 @@ spec:
       {{- end }}
       containers:
         - name: nexus
-          image: {{ .Values.nexus.imageName }}:{{ .Values.nexus.imageTag }}
+          image: {{ .Values.nexus.imageName }}
           imagePullPolicy: {{ .Values.nexus.imagePullPolicy }}
           {{- if .Values.deployment.terminationGracePeriodSeconds }}
           terminationGracePeriodSeconds: {{ .Values.deployment.terminationGracePeriodSeconds }}
