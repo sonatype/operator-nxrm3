@@ -1,7 +1,0 @@
----
-- version: v1alpha1
-  group: apigw.sonatypenxrm.com
-  kind: SonatypeNXRM
-  chart: helm-charts/sonatype-nexus
-  overrideValues:
-    nexus.imageName: $RELATED_IMAGE_NEXUS
