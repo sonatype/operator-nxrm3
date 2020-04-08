@@ -125,7 +125,7 @@ metadata:
     capabilities: Basic Install
     categories: "Integration & Delivery"
     description: Sonatype Nexus is an open source repository manager
-    containerImage: quay.io/jflinchbaugh/nxrm-operator-certified
+    containerImage: registry.connect.redhat.com/sonatype/nxrm-operator-certified
     repository: https://github.com/sonatype/operator-nxrm3
     createdAt: 2020-04-07
     support: Sonatype
@@ -264,7 +264,7 @@ spec:
   - sonatype
   links:
   - name: Nexus Repository Manager
-    url: https://www.sonatype.com/nexus-repository-oss
+    url: https://www.sonatype.com/product-nexus-repository
   maintainers:
   - email: cloud-ops@sonatype.com
     name: Sonatype Cloud Ops
