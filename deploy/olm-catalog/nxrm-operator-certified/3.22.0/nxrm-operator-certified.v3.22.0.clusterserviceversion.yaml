@@ -6,7 +6,7 @@ metadata:
       [
         {
           "apiVersion": "apm.nxrm.com/v1alpha1",
-          "kind": "Nxrm",
+          "kind": "NXRM",
           "metadata": {
             "name": "example-nxrm"
           },

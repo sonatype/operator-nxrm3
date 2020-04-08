@@ -5,8 +5,8 @@ metadata:
 spec:
   group: apm.nxrm.com
   names:
-    kind: Nxrm
-    listKind: NxrmList
+    kind: NXRM
+    listKind: NXRMList
     plural: nxrms
     singular: nxrm
   scope: Namespaced

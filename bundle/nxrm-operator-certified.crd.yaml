@@ -6,8 +6,8 @@ spec:
   group: apm.nxrm.com
   version: 3.22.0
   names:
-    kind: Nxrm
-    listKind: NxrmList
+    kind: NXRM
+    listKind: NXRMList
     plural: nxrms
     singular: nxrm
   scope: Namespaced
