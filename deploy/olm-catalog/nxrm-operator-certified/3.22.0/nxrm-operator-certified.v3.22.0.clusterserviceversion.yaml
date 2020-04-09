@@ -170,7 +170,7 @@ spec:
                   value: nxrm-operator-certified
                 - name: RELATED_IMAGE_NEXUS
                   value: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.22.0-ubi-1
-                image: REPLACE_IMAGE
+                image: registry.connect.redhat.com/sonatype/nxrm-operator-certified:3.22.0
                 imagePullPolicy: Always
                 name: nxrm-operator-certified
                 resources: {}
