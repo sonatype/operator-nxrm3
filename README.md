@@ -28,3 +28,17 @@ and push your operator image to quay.io to make it available for installation.
 1. Remove the route in the console.
 2. Remove exposed service in the console.
 3. Uninstall all the descriptors for the operator: `scripts/uninstall.sh`.
+
+## Building for Production
+
+1. Follow the "Upload Your Image" instructions with IDs provided at
+   https://connect.redhat.com/project/3843071/view:
+  a. `operator-sdk build registry.connect.redhat.com/sonatype/nxrm-operator-certified`
+  b. `docker login -u unused -e none scan.connect.redhat.com`
+  c. `docker tag registry.connect.redhat.com/sonatype/nxrm-operator-certified ...`
+  d. `docker push ...`
+2. Package and upload metadata to Operator Config
+  a. `cd bundle; zip -rv ../nxrm-operator-certified-metadata.zip .`
+  b. Upload the zip to "Operator Config" of
+     https://connect.redhat.com/project/3843071/vieww
+
