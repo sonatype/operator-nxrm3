@@ -2,42 +2,8 @@ apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
   creationTimestamp: null
-  name: sonatypenxrm-operator
+  name: nxrm-operator-certified
 rules:
-- apiGroups:
-  - ""
-  resources:
-  - pods
-  - services
-  - services/finalizers
-  - endpoints
-  - persistentvolumeclaims
-  - events
-  - configmaps
-  - secrets
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
-- apiGroups:
-  - apps
-  resources:
-  - deployments
-  - daemonsets
-  - replicasets
-  - statefulsets
-  verbs:
-  - create
-  - delete
-  - get
-  - list
-  - patch
-  - update
-  - watch
 - apiGroups:
   - ""
   resources:
@@ -58,6 +24,18 @@ rules:
   verbs:
   - create
 - apiGroups:
+  - ""
+  resources:
+  - persistentvolumeclaims
+  verbs:
+  - '*'
+- apiGroups:
+  - apps
+  resources:
+  - deployments
+  verbs:
+  - '*'
+- apiGroups:
   - monitoring.coreos.com
   resources:
   - servicemonitors
@@ -67,7 +45,7 @@ rules:
 - apiGroups:
   - apps
   resourceNames:
-  - sonatypenxrm-operator
+  - nxrm-operator-certified
   resources:
   - deployments/finalizers
   verbs:
@@ -86,7 +64,7 @@ rules:
   verbs:
   - get
 - apiGroups:
-  - apigw.sonatypenxrm.com
+  - apm.nxrm.com
   resources:
   - '*'
   verbs:

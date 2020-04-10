@@ -1,12 +1,12 @@
-FROM quay.io/operator-framework/helm-operator:v0.15.1
+FROM quay.io/operator-framework/helm-operator:v0.16.0
 
 # Required OpenShift Labels
-LABEL name="Sonatype NXRM Operator" \
+LABEL name="Nexus Repository Manager Operator" \
       vendor="Sonatype" \
-      version="v0.0.0" \
+      version="3.22.0" \
       release="1" \
-      summary="This is a sonatype nxrm operator." \
-      description="This operator will deploy an operator for Nexus Repositroy Manager."
+      summary="The Nexus Repository Manager with universal support for popular component formats." \
+      description="The Nexus Repository Manager with universal support for popular component formats."
 
 # Required Licenses
 COPY licenses /licenses

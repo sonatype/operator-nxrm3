@@ -1,5 +1,0 @@
-channels:
-- currentCSV: sonatypenxrm-operator.v0.0.0
-  name: alpha
-defaultChannel: alpha
-packageName: sonatypenxrm-operator

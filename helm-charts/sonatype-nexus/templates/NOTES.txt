@@ -3,6 +3,8 @@ NodePort:
 
   kubectl expose deployment --type=NodePort {{ template "nexus.fullname" . }}
 
+You may also need to add a Route or Ingress to the new service
+that was created by the exposed deployment.
 
 If you are using minikube, you can find the url as:
 
@@ -10,7 +12,8 @@ If you are using minikube, you can find the url as:
 
 Otherwise you can find the exposed port under `NodePort` in:
 
-# kubectl describe services {{ template "nexus.fullname" . }}
+   kubectl describe services {{ template "nexus.fullname" . }}
+
 Name:                     {{ template "nexus.fullname" . }}
 Namespace:                default
 Labels:                   app=sonatype-nexus

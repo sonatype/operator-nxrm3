@@ -53,17 +53,22 @@ spec:
       {{- end }}
       {{- if .Values.nexus.imagePullSecret }}
       imagePullSecrets:
-        - name: {{ .Values.nexus.imagePullSecret }}
+        - name: {{ template "nexus.name" . }}
       {{- end }}
       containers:
         - name: nexus
           image: {{ .Values.nexus.imageName }}
           imagePullPolicy: {{ .Values.nexus.imagePullPolicy }}
-          {{- if .Values.deployment.postStart.command }}
           lifecycle:
+          {{- if .Values.deployment.postStart.command }}
             postStart:
               exec:
                 command: {{ .Values.deployment.postStart.command }}
+          {{- end }}
+          {{- if .Values.deployment.preStart.command }}
+            preStart:
+              exec:
+                command: {{ .Values.deployment.preStart.command }}
           {{- end }}
           env:
 {{ toYaml .Values.nexus.env | indent 12 }}

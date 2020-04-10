@@ -1,11 +1,11 @@
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  name: sonatypenxrm-operator
+  name: nxrm-operator-certified
 subjects:
 - kind: ServiceAccount
-  name: sonatypenxrm-operator
+  name: nxrm-operator-certified
 roleRef:
   kind: Role
-  name: sonatypenxrm-operator
+  name: nxrm-operator-certified
   apiGroup: rbac.authorization.k8s.io

@@ -10,6 +10,7 @@ This chart bootstraps a Nexus OSS deployment on a cluster using Helm.
 
 - Kubernetes 1.8+ with Beta APIs enabled
 - PV provisioner support in the underlying infrastructure
+- Helm 2
 
 ### With Open Docker Image
 
@@ -22,7 +23,7 @@ Red Hat Certified Container (RHCC) requires authentication in order to pull the 
   1. [Create a Service Account](https://access.redhat.com/terms-based-registry/)
   2. Copy the docker configuration JSON sample and replace the host from `registry.redhat.io` to `registry.connect.redhat.com` and save it as a file, eg:
 
-```JSON
+```json
 {
   "auths": {
     "registry.connect.redhat.com": {
@@ -31,28 +32,19 @@ Red Hat Certified Container (RHCC) requires authentication in order to pull the 
   }
 }
 ```
+
+If the cluster fails to pull the image, try reverting back to `registry.redhat.io` in the `auths` configuration.
+
   3. Encode the file in Base 64 format:
 
 ```bash
 cat service-auth.json | base64 > service.base64
 ```
-  4. Create a Secret file, eg `rhcc-pull-secret.yaml` using this base 64 string as:
+  4. Add this base64 encoded string to your `myvalues.yaml` file as `nexus.imagePullSecret`:
 
-```YAML
-apiVersion: v1
-kind: Secret
-metadata:
-  name: rhcc-pull-secret
-data:
-  .dockerconfigjson: {BASE64-DOCKER-CONFIG}
-
-type: kubernetes.io/dockerconfigjson
-```
-
-Then this can be submitted to the cluster as:
-
-```bash
-kubectl create -f rhcc-pull-secret.yaml --namespace=NAMESPACEHERE
+```yaml
+nexus:
+  imagePullSecret: {BASE64_ENCODED_SECRET}
 ```
 
 ## Initialize Helm/Tiller on the Kubernetes cluster if needed
@@ -61,7 +53,6 @@ Install helm/tiller:
 ```bash
 $ helm init
 ```
-
 
 ## Testing the Chart
 To test the chart:
@@ -78,7 +69,7 @@ $ helm install --dry-run --debug -f my_values.yaml ./
 To install the chart:
 
 ```bash
-$ helm install ./
+$ helm install -f myvalues.yaml ./
 ```
 
 If you are getting the error `Error: no available release name found` during
@@ -155,6 +146,8 @@ The following table lists the configurable parameters of the Nexus chart and the
 | `deployment.annotations`                    | Annotations to enhance deployment configuration  | `{}`                       |
 | `deployment.initContainers`                 | Init containers to run before main containers  | `nil`                        |
 | `deployment.postStart.command`              | Command to run after starting the nexus container  | `nil`                    |
+| `deployment.preStart.command`               | Command to run before starting the nexus container  | `nil`                   |
+| `deployment.terminationGracePeriodSeconds`  | Update termination grace period (in seconds)        | 120s                    |
 | `deployment.additionalContainers`           | Add additional Container         | `nil`                                      |
 | `deployment.additionalVolumes`              | Add additional Volumes           | `nil`                                      |
 | `deployment.additionalVolumeMounts`         | Add additional Volume mounts     | `nil`                                      |

@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sonatypenxrm-operator
+  name: nxrm-operator-certified
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: sonatypenxrm-operator
+      name: nxrm-operator-certified
   template:
     metadata:
       labels:
-        name: sonatypenxrm-operator
+        name: nxrm-operator-certified
     spec:
-      serviceAccountName: sonatypenxrm-operator
+      serviceAccountName: nxrm-operator-certified
       containers:
-        - name: sonatypenxrm-operator
+        - name: nxrm-operator-certified
           # Replace this with the built image name
-          image: REPLACE_IMAGE
+          image: registry.connect.redhat.com/sonatype/nxrm-operator-certified
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
@@ -28,6 +28,6 @@ spec:
                 fieldRef:
                   fieldPath: metadata.name
             - name: OPERATOR_NAME
-              value: "sonatypenxrm-operator"
+              value: "nxrm-operator-certified"
             - name: RELATED_IMAGE_NEXUS
-              value: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.20.1-01-ubi-3
+              value: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.22.0-ubi-1
