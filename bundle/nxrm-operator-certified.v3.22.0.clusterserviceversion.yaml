@@ -135,7 +135,12 @@ metadata:
 spec:
   apiservicedefinitions: {}
   customresourcedefinitions:
-    owned: {}
+    owned:
+      - description: Sonatype Nexus Repository Manager
+        displayName: NXRM
+        kind: NXRM
+        name: nxrms.apm.nxrm.com
+        version: v1alpha1
   description: Sonatype Nexus is an open source repository manager
   displayName: NXRM Operator Certified
   icon:
