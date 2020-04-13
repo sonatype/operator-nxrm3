@@ -11,16 +11,16 @@ and push your operator image to quay.io to make it available for installation.
    for a local Openshift 4 environment.
 2. Ensure you have a personal quay.io account.
 3. Build and deploy the operator image to your personal quay.io repository:
-  a. `operator-sdk build quay.io/<username>/nxrm-operator-certified`
-  b. `docker login quay.io`
-  c. `docker push quay.io/<username>/nxrm-operator-certified`
+   1. `operator-sdk build quay.io/<username>/nxrm-operator-certified`
+   2. `docker login quay.io`
+   3. `docker push quay.io/<username>/nxrm-operator-certified`
 5. Make sure the new image on quay.io is public.
 6. Update the `deploy/operator.yaml` to point to your test image at quay.io.
 7. Install all the descriptors for the operator to your OpenShift cluster:
-  a. `scripts/install.sh`
+   1. `scripts/install.sh`
 8. Expose the new NXRM outside the cluster: 
-  a. `kubectl expose deployment --type=NodePort example-nxrm-sonatype-nexus`
-  b. Create a Route in OpenShift UI to the new service, port 8081.
+   1. `kubectl expose deployment --type=NodePort example-nxrm-sonatype-nexus`
+   2. Create a Route in OpenShift UI to the new service, port 8081.
 9. Visit the new URL shown on the Route page in OpenShift UI.
   
 ## Uninstall NXRM 3 from a Local Test Cluster
@@ -33,12 +33,12 @@ and push your operator image to quay.io to make it available for installation.
 
 1. Follow the "Upload Your Image" instructions with IDs provided at
    https://connect.redhat.com/project/3843071/view:
-  a. `operator-sdk build registry.connect.redhat.com/sonatype/nxrm-operator-certified`
-  b. `docker login -u unused -e none scan.connect.redhat.com`
-  c. `docker tag registry.connect.redhat.com/sonatype/nxrm-operator-certified ...`
-  d. `docker push ...`
+   1. `operator-sdk build registry.connect.redhat.com/sonatype/nxrm-operator-certified`
+   2. `docker login -u unused -e none scan.connect.redhat.com`
+   3. `docker tag registry.connect.redhat.com/sonatype/nxrm-operator-certified ...`
+   4. `docker push ...`
 2. Package and upload metadata to Operator Config
-  a. `cd bundle; zip -rv ../nxrm-operator-certified-metadata.zip .`
-  b. Upload the zip to "Operator Config" of
+   1. `cd bundle; zip -rv ../nxrm-operator-certified-metadata.zip .`
+   2. Upload the zip to "Operator Config" of
      https://connect.redhat.com/project/3843071/vieww
 
