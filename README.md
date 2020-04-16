@@ -14,7 +14,8 @@ and push your operator image to quay.io to make it available for installation.
    1. `operator-sdk build quay.io/<username>/nxrm-operator-certified`
    2. `docker login quay.io`
    3. `docker push quay.io/<username>/nxrm-operator-certified`
-5. Make sure the new image on quay.io is public.
+5. Make sure the new image on quay.io is public, so that the openshift
+   cluster can pull it.
 6. Update the `deploy/operator.yaml` to point to your test image at quay.io.
 7. Install all the descriptors for the operator to your OpenShift cluster:
    1. `scripts/install.sh`
@@ -32,13 +33,10 @@ and push your operator image to quay.io to make it available for installation.
 ## Building for Production
 
 1. Follow the "Upload Your Image" instructions with IDs provided at
-   https://connect.redhat.com/project/3843071/view:
-   1. `operator-sdk build registry.connect.redhat.com/sonatype/nxrm-operator-certified`
-   2. `docker login -u unused -e none scan.connect.redhat.com`
-   3. `docker tag registry.connect.redhat.com/sonatype/nxrm-operator-certified ...`
-   4. `docker push ...`
+   https://connect.redhat.com/project/3843071/view to login and push
+   your docker image.
 2. Package and upload metadata to Operator Config
    1. `cd bundle; zip -rv ../nxrm-operator-certified-metadata.zip .`
    2. Upload the zip to "Operator Config" of
-     https://connect.redhat.com/project/3843071/vieww
+     https://connect.redhat.com/project/3843071/view
 
