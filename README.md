@@ -7,7 +7,7 @@ Manager 3 to an OpenShift cluster.
 To develop and test locally, you'll use CodeReady Containers on your workstation
 and push your operator image to quay.io to make it available for installation.
 
-1. Install [https://developers.redhat.com/products/codeready-containers/overview](CodeReady Containers)
+1. Install [CodeReady Containers](https://developers.redhat.com/products/codeready-containers/overview)
    for a local Openshift 4 environment.
 2. Ensure you have a personal quay.io account.
 3. Build and deploy the operator image to your personal quay.io repository:
