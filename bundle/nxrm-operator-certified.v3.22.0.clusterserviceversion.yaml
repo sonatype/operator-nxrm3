@@ -6,9 +6,9 @@ metadata:
       [
         {
           "apiVersion": "apm.nxrm.com/v1alpha1",
-          "kind": "NXRM",
+          "kind": "NexusRepo",
           "metadata": {
-            "name": "example-nxrm"
+            "name": "example-nexusrepo"
           },
           "spec": {
             "config": {
@@ -137,9 +137,9 @@ spec:
   customresourcedefinitions:
     owned:
       - description: Sonatype Nexus Repository Manager
-        displayName: NXRM
-        kind: NXRM
-        name: nxrms.apm.nxrm.com
+        displayName: NexusRepo
+        kind: NexusRepo
+        name: nexusrepos.apm.nxrm.com
         version: v1alpha1
   description: Sonatype Nexus is an open source repository manager
   displayName: NXRM Operator Certified

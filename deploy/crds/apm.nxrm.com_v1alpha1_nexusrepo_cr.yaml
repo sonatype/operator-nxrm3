@@ -1,7 +1,7 @@
 apiVersion: apm.nxrm.com/v1alpha1
-kind: NXRM
+kind: NexusRepo
 metadata:
-  name: example-nxrm
+  name: example-nexusrepo
 spec:
   # Default values copied from <project_dir>/helm-charts/sonatype-nexus/values.yaml
 
