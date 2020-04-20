@@ -1,7 +1,7 @@
 FROM quay.io/operator-framework/helm-operator:v0.16.0
 
 # Required OpenShift Labels
-LABEL name="Nexus Repository Manager Operator" \
+LABEL name="Nexus Repository Operator" \
       vendor="Sonatype" \
       version="3.22.0" \
       release="1" \
