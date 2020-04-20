@@ -136,7 +136,7 @@ spec:
   apiservicedefinitions: {}
   customresourcedefinitions:
     owned:
-      - description: Sonatype Nexus Repository Manager
+      - description: Nexus Repository
         displayName: NexusRepo
         kind: NexusRepo
         name: nexusrepos.apm.nxrm.com
