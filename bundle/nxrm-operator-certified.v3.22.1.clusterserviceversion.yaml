@@ -124,7 +124,9 @@ metadata:
       ]
     capabilities: Basic Install
     categories: "Integration & Delivery"
-    description: Nexus Repository is the central source of control for all binaries and build artifacts across your DevOps pipelines.
+    description: |-
+      Nexus Repository is the central source of control for all binaries
+      and build artifacts across your DevOps pipelines.
     containerImage: registry.connect.redhat.com/sonatype/nxrm-operator-certified
     repository: https://github.com/sonatype/operator-nxrm3
     createdAt: 2020-04-21
