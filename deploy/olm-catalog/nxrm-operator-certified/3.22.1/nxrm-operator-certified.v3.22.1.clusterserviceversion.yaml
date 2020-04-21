@@ -125,8 +125,8 @@ metadata:
     capabilities: Basic Install
     categories: "Integration & Delivery"
     description: |-
-      Nexus Repository is the central source of control for all binaries
-      and build artifacts across your DevOps pipelines.
+      Nexus Repository is the central source of control to efficiently manage all binaries
+      and build artifacts across your DevOps pipeline.
     containerImage: registry.connect.redhat.com/sonatype/nxrm-operator-certified
     repository: https://github.com/sonatype/operator-nxrm3
     createdAt: 2020-04-21
@@ -144,8 +144,30 @@ spec:
         name: nexusrepos.apm.nxrm.com
         version: v1alpha1
   description: |-
-    Nexus Repository is the central source of control for all binaries
-    and build artifacts across your DevOps pipelines.
+    Nexus Repository is the central source of control to efficiently manage all binaries
+    and build artifacts across your DevOps pipeline.
+    The flow of open source and third-party components into and through an organization
+    creates a complex software supply chain.
+    Nexus Repository delivers speed, efficiency, and quality to the governance
+    and management of all dependencies, libraries, and applications for your DevOps teams.
+
+    ## Core Capabilities
+
+    * **Dependency Management**:
+      Improves reliability with repeatable, fast access to secure dependencies
+    * **Developer Productivity**:
+      Streamline developer workflows by enabling the sharing of components and applications across teams
+    * **Supply Chain Performance**:
+      Improve speed-to-market and reduced build times with release advanced staging and component tagging
+    * **CI/CD Integrations**:
+      Increase DevOps scalability with integrations to the most popular build and deployment tools
+
+    Version control systems and package registries do not scale when managing proprietary,
+    open source, and third-party components.
+    Organizations need a central binary and build artifact repository to manage dependencies
+    across the entire software supply chain.
+
+    ## Usage
 
     Once the server instance is created by the operator and running,
     you'll want to expose the service as you see fit:
