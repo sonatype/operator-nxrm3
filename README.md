@@ -32,11 +32,13 @@ and push your operator image to quay.io to make it available for installation.
 
 ## Building for Production
 
-1. Follow the "Upload Your Image" instructions with IDs provided at
+1. Build the docker image for Red Hat repository:
+   `operator-sdk build registry.connect.redhat.com/sonatype/nxrm-operator-certified`
+2. Follow the "Upload Your Image" instructions with IDs provided at
    https://connect.redhat.com/project/3843071/view to login and push
    your docker image.
-2. Package and upload metadata to Operator Config
+3. Package and upload metadata to Operator Config
    1. `cd bundle; zip -rv ../nxrm-operator-certified-metadata.zip .`
    2. Upload the zip to "Operator Config" of
      https://connect.redhat.com/project/3843071/view
-
+   3. Once it successfully scans, which can take up to an hour. Publish the config.
