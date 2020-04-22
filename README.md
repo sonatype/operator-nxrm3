@@ -19,8 +19,8 @@ and push your operator image to quay.io to make it available for installation.
 6. Update the `deploy/operator.yaml` to point to your test image at quay.io.
 7. Install all the descriptors for the operator to your OpenShift cluster:
    1. `scripts/install.sh`
-8. Expose the new NXRM outside the cluster: 
-   1. `kubectl expose deployment --type=NodePort example-nxrm-sonatype-nexus`
+8. Expose the new Nexus Repo outside the cluster: 
+   1. `kubectl expose deployment --type=NodePort example-nexusrepo-sonatype-nexus`
    2. Create a Route in OpenShift UI to the new service, port 8081.
 9. Visit the new URL shown on the Route page in OpenShift UI.
   

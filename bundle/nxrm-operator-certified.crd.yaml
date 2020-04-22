@@ -1,14 +1,14 @@
 apiVersion: apiextensions.k8s.io/v1beta1
 kind: CustomResourceDefinition
 metadata:
-  name: nxrms.apm.nxrm.com
+  name: nexusrepos.apm.nxrm.com
 spec:
   group: apm.nxrm.com
   names:
-    kind: NXRM
-    listKind: NXRMList
-    plural: nxrms
-    singular: nxrm
+    kind: NexusRepo
+    listKind: NexusRepoList
+    plural: nexusrepos
+    singular: nexusrepo
   scope: Namespaced
   subresources:
     status: {}
