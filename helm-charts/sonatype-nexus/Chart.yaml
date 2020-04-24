@@ -15,7 +15,7 @@ keywords:
 - repository-manager
 - nexus3
 maintainers:
-- email: cloud-ops@sonatype.com
+- email: support@sonatype.com
   name: Sonatype
 name: sonatype-nexus
 sources:

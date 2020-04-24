@@ -365,8 +365,8 @@ spec:
   - name: Nexus Repository Manager
     url: https://www.sonatype.com/product-nexus-repository
   maintainers:
-  - email: cloud-ops@sonatype.com
-    name: Sonatype Cloud Ops
+  - email: support@sonatype.com
+    name: Sonatype
   maturity: alpha
   provider:
     name: Sonatype
