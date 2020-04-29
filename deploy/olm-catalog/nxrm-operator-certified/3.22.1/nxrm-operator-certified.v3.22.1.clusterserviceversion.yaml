@@ -5,7 +5,7 @@ metadata:
     alm-examples: |-
       [
         {
-          "apiVersion": "apm.nxrm.com/v1alpha1",
+          "apiVersion": "sonatype.com/v1alpha1",
           "kind": "NexusRepo",
           "metadata": {
             "name": "example-nexusrepo"
@@ -141,7 +141,7 @@ spec:
       - description: Nexus Repository
         displayName: NexusRepo
         kind: NexusRepo
-        name: nexusrepos.apm.nxrm.com
+        name: nexusrepos.sonatype.com
         version: v1alpha1
   description: |-
     Nexus Repository is the central source of control to efficiently manage all binaries
@@ -336,7 +336,7 @@ spec:
           verbs:
           - get
         - apiGroups:
-          - apm.nxrm.com
+          - sonatype.com
           resources:
           - '*'
           verbs:

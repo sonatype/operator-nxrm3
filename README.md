@@ -37,6 +37,9 @@ and push your operator image to quay.io to make it available for installation.
 2. Follow the "Upload Your Image" instructions with IDs provided at
    https://connect.redhat.com/project/3843071/view to login and push
    your docker image.
+   1. `[image-id]` can be collected from `docker images`
+   2. `[image-name]` is `nxrm-operator-certified`
+   3. `[tag]` is the next version that's not already there, such as: `3.20.0-1`
 3. Package and upload metadata to Operator Config
    1. `cd bundle; zip -rv ../nxrm-operator-certified-metadata.zip .`
    2. Upload the zip to "Operator Config" of

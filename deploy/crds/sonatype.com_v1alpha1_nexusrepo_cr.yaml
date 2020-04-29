@@ -1,4 +1,4 @@
-apiVersion: apm.nxrm.com/v1alpha1
+apiVersion: sonatype.com/v1alpha1
 kind: NexusRepo
 metadata:
   name: example-nexusrepo

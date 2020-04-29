@@ -1,6 +1,6 @@
 ---
 - version: v1alpha1
-  group: apm.nxrm.com
+  group: sonatype.com
   kind: NexusRepo
   chart: helm-charts/sonatype-nexus
   overrideValues:

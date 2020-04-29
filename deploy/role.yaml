@@ -64,7 +64,7 @@ rules:
   verbs:
   - get
 - apiGroups:
-  - apm.nxrm.com
+  - sonatype.com
   resources:
   - '*'
   verbs:
