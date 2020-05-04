@@ -18,7 +18,7 @@ and push your operator image to quay.io to make it available for installation.
    cluster can pull it.
 6. Update the `deploy/operator.yaml` to point to your test image at quay.io.
 7. Install all the descriptors for the operator to your OpenShift cluster:
-   1. `scripts/install.sh`
+   1. `./scripts/install.sh`
 8. Expose the new Nexus Repo outside the cluster: 
    1. `kubectl expose deployment --type=NodePort example-nexusrepo-sonatype-nexus`
    2. Create a Route in OpenShift UI to the new service, port 8081.
@@ -28,18 +28,18 @@ and push your operator image to quay.io to make it available for installation.
 
 1. Remove the route in the console.
 2. Remove exposed service in the console.
-3. Uninstall all the descriptors for the operator: `scripts/uninstall.sh`.
+3. Uninstall all the descriptors for the operator: `./scripts/uninstall.sh`.
 
 ## Building for Production
 
 1. Build the docker image for Red Hat repository:
-   `operator-sdk build registry.connect.redhat.com/sonatype/nxrm-operator-certified`
+   `operator-sdk build registry.connect.redhat.com/sonatype/nxrm-operator-certified:[operator-version]`
 2. Follow the "Upload Your Image" instructions with IDs provided at
    https://connect.redhat.com/project/3843071/view to login and push
    your docker image.
    1. `[image-id]` can be collected from `docker images`
    2. `[image-name]` is `nxrm-operator-certified`
-   3. `[tag]` is the next version that's not already there in the form: `3.22.1-1`
+   3. `[tag]` is the operator version that's not already there in the form: `3.22.1-1`
 3. Package and upload metadata to Operator Config
    1. Create the bundle zip file: `./scripts/bundle.sh`
    2. Upload the zip to "Operator Config" of
