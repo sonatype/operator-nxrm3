@@ -11,9 +11,9 @@ and push your operator image to quay.io to make it available for installation.
    for a local Openshift 4 environment.
 2. Ensure you have a personal quay.io account.
 3. Build and deploy the operator image to your personal quay.io repository:
-   1. `operator-sdk build quay.io/<username>/nxrm-operator-certified`
+   1. `operator-sdk build quay.io/<username>/nxrm-operator-certified:[operator-version]`
    2. `docker login quay.io`
-   3. `docker push quay.io/<username>/nxrm-operator-certified`
+   3. `docker push quay.io/<username>/nxrm-operator-certified:[operator-version]`
 5. Make sure the new image on quay.io is public, so that the openshift
    cluster can pull it.
 6. Update the `deploy/operator.yaml` to point to your test image at quay.io.
