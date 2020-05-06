@@ -127,7 +127,7 @@ metadata:
     description: |-
       Nexus Repository is the central source of control to efficiently manage all binaries
       and build artifacts across your DevOps pipeline.
-    containerImage: registry.connect.redhat.com/sonatype/nxrm-operator-certified
+    containerImage: registry.connect.redhat.com/sonatype/nxrm-operator-certified:3.22.1
     repository: https://github.com/sonatype/operator-nxrm3
     createdAt: 2020-04-21
     support: Sonatype
