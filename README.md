@@ -44,4 +44,4 @@ and push your operator image to quay.io to make it available for installation.
    1. Create the bundle zip file: `./scripts/bundle.sh`
    2. Upload the zip to "Operator Config" of
      https://connect.redhat.com/project/3843071/view
-   3. Once it successfully scans, which can take up to an hour. Publish the config.
+   3. Once it successfully scans, which can take up to an hour, publish the config.
