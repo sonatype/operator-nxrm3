@@ -77,8 +77,7 @@ node('ubuntu-zion') {
             string(credentialsId: 'operator-nxrm-rh-build-project-id', variable: 'PROJECT_ID'),
             string(credentialsId: 'rh-build-service-api-key', variable: 'API_KEY')]) {
           final redHatVersion = "${version}-ubi"
-          // runGroovy('ci/TriggerRedHatBuild.groovy', [redHatVersion, PROJECT_ID, API_KEY].join(' '))
-          println(['ci/TriggerRedHatBuild.groovy', [redHatVersion, PROJECT_ID, API_KEY].join(' ')])
+          runGroovy('ci/TriggerRedHatBuild.groovy', [redHatVersion, PROJECT_ID, API_KEY].join(' '))
         }
       }
     }
