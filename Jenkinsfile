@@ -37,6 +37,8 @@ node('ubuntu-zion') {
       OsTools.runSafe(this, 'git config --global user.email sonatype-ci@sonatype.com')
       OsTools.runSafe(this, 'git config --global user.name Sonatype CI')
 
+      version = readVersion()
+
       def apiToken
       withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: credentialsId,
                         usernameVariable: 'GITHUB_API_USERNAME', passwordVariable: 'GITHUB_API_PASSWORD']]) {
@@ -75,7 +77,8 @@ node('ubuntu-zion') {
             string(credentialsId: 'operator-nxrm-rh-build-project-id', variable: 'PROJECT_ID'),
             string(credentialsId: 'rh-build-service-api-key', variable: 'API_KEY')]) {
           final redHatVersion = "${version}-ubi"
-          runGroovy('ci/TriggerRedHatBuild.groovy', [redHatVersion, PROJECT_ID, API_KEY].join(' '))
+          // runGroovy('ci/TriggerRedHatBuild.groovy', [redHatVersion, PROJECT_ID, API_KEY].join(' '))
+          println(['ci/TriggerRedHatBuild.groovy', [redHatVersion, PROJECT_ID, API_KEY].join(' ')])
         }
       }
     }
@@ -83,3 +86,16 @@ node('ubuntu-zion') {
   }
 }
 
+def getShortVersion(version) {
+  return version.split('-')[0]
+}
+
+def readVersion() {
+  def content = readFile 'build/Dockerfile'
+  for (line in content.split('\n')) {
+    if (line.contains('version=')) {
+      return getShortVersion(line.split('=')[1].replaceAll('"', ''))
+    }
+  }
+  error 'Could not determine version.'
+}
