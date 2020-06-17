@@ -94,7 +94,7 @@ def readVersion() {
   def content = readFile 'build/Dockerfile'
   for (line in content.split('\n')) {
     if (line.contains('version=')) {
-      return getShortVersion(line.split('=')[1].replaceAll('"', ''))
+      return getShortVersion(line.split('=')[1].replaceAll(/["\s]+/, ''))
     }
   }
   error 'Could not determine version.'
