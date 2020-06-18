@@ -50,8 +50,7 @@ node('ubuntu-zion') {
         withCredentials([
             string(credentialsId: 'operator-nxrm-rh-build-project-id', variable: 'PROJECT_ID'),
             string(credentialsId: 'rh-build-service-api-key', variable: 'API_KEY')]) {
-          final redHatVersion = "${version}-ubi"
-          runGroovy('ci/TriggerRedHatBuild.groovy', [redHatVersion, PROJECT_ID, API_KEY].join(' '))
+          runGroovy('ci/TriggerRedHatBuild.groovy', "'${version}' '${PROJECT_ID}' '${API_KEY}'")
         }
       }
     }
@@ -92,7 +91,7 @@ def readVersion() {
   def content = readFile 'build/Dockerfile'
   for (line in content.split('\n')) {
     if (line.contains('version=')) {
-      return getShortVersion(line.split('=')[1].replaceAll(/["\s]+/, ''))
+      return line.split('=')[1].replaceAll(/[^\d.-]+/, '').trim()
     }
   }
   error 'Could not determine version.'
