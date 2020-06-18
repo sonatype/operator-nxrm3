@@ -45,6 +45,17 @@ node('ubuntu-zion') {
       gitHub = new GitHub(this, "${organization}/${gitHubRepository}", apiToken)
     }
 
+    if ((! params.skip_red_hat_build) && (branch == 'master' || params.force_red_hat_build)) {
+      stage('Trigger Red Hat Certified Image Build') {
+        withCredentials([
+            string(credentialsId: 'operator-nxrm-rh-build-project-id', variable: 'PROJECT_ID'),
+            string(credentialsId: 'rh-build-service-api-key', variable: 'API_KEY')]) {
+          final redHatVersion = "${version}-ubi"
+          runGroovy('ci/TriggerRedHatBuild.groovy', [redHatVersion, PROJECT_ID, API_KEY].join(' '))
+        }
+      }
+    }
+
     stage('Build') {
       gitHub.statusUpdate commitId, 'pending', 'build', 'Build is running'
 
@@ -66,16 +77,6 @@ node('ubuntu-zion') {
         archiveArtifacts artifacts: archiveName, onlyIfSuccessful: true
     }
 
-    if ((! params.skip_red_hat_build) && (branch == 'master' || params.force_red_hat_build)) {
-      stage('Trigger Red Hat Certified Image Build') {
-        withCredentials([
-            string(credentialsId: 'operator-nxrm-rh-build-project-id', variable: 'PROJECT_ID'),
-            string(credentialsId: 'rh-build-service-api-key', variable: 'API_KEY')]) {
-          final redHatVersion = "${version}-ubi"
-          runGroovy('ci/TriggerRedHatBuild.groovy', [redHatVersion, PROJECT_ID, API_KEY].join(' '))
-        }
-      }
-    }
   } finally {
   }
 }
