@@ -67,3 +67,6 @@ Note: If the anticipated operator version gets out of sync with the metadata,
 you can commit updates to the versions in the metadata, and build again while
 checking the option in the build to `skip_red_hat_build`, so the operator
 image doesn't again get updated.
+
+Operator images can also be unpublished and removed from Red Hat's Registry if
+no operator config is pointing to it.
