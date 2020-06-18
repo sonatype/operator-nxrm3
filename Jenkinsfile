@@ -48,7 +48,7 @@ node('ubuntu-zion') {
     stage('Build') {
       gitHub.statusUpdate commitId, 'pending', 'build', 'Build is running'
 
-      // bundle
+      OsTools.runSafe(this, 'scripts/bundle.sh')
 
       if (currentBuild.result == 'FAILURE') {
         gitHub.statusUpdate commitId, 'failure', 'build', 'Build failed'
@@ -60,10 +60,6 @@ node('ubuntu-zion') {
 
     if (currentBuild.result == 'FAILURE') {
       return
-    }
-
-    stage('Bundle') {
-        OsTools.runSafe(this, 'scripts/bundle.sh')
     }
 
     stage('Archive') {
