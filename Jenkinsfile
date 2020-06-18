@@ -56,6 +56,10 @@ node('ubuntu-zion') {
       }
     }
 
+    if (currentBuild.result == 'FAILURE') {
+      return
+    }
+
     stage('Build') {
       gitHub.statusUpdate commitId, 'pending', 'build', 'Build is running'
 
@@ -63,7 +67,6 @@ node('ubuntu-zion') {
 
       if (currentBuild.result == 'FAILURE') {
         gitHub.statusUpdate commitId, 'failure', 'build', 'Build failed'
-        return
       } else {
         gitHub.statusUpdate commitId, 'success', 'build', 'Build succeeded'
       }
