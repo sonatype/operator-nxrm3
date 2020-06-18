@@ -15,13 +15,11 @@ properties([
 ])
 
 node('ubuntu-zion') {
-  def commitId, commitDate, version, imageId, branch, dockerFileLocations
+  def commitId, commitDate, version, branch
   def organization = 'sonatype',
-      gitHubRepository = 'docker-nexus3',
+      gitHubRepository = 'operator-nxrm3',
       credentialsId = 'integrations-github-api',
-      imageName = 'sonatype/nexus3',
-      archiveName = 'docker-nexus3',
-      dockerHubRepository = 'nexus3'
+      archiveName = 'nxrm-operator-certified-metadata.zip'
   GitHub gitHub
 
   try {
@@ -64,11 +62,12 @@ node('ubuntu-zion') {
       return
     }
 
+    stage('Bundle') {
+        OsTools.runSafe(this, 'scripts/bundle.sh')
+    }
+
     stage('Archive') {
-      dir('build/target') {
-        OsTools.runSafe(this, "docker save ${imageName} | gzip > ${archiveName}.tar.gz")
-        archiveArtifacts artifacts: "${archiveName}.tar.gz", onlyIfSuccessful: true
-      }
+        archiveArtifacts artifacts: archiveName, onlyIfSuccessful: true
     }
 
     if ((! params.skip_red_hat_build) && (branch == 'master' || params.force_red_hat_build)) {
