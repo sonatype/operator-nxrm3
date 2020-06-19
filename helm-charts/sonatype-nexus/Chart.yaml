@@ -1,5 +1,5 @@
 apiVersion: v1
-appVersion: 3.23.0
+appVersion: 3.24.0
 description: Sonatype Nexus is an open source repository manager
 home: https://www.sonatype.com/nexus-repository-oss
 icon: https://www.sonatype.com/hubfs/2019%20Horizontal%20Product%20logo/horizontal%20Repo%20/Repo/NexusRepo_horiz.svg
