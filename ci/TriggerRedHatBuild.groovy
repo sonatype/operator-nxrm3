@@ -112,7 +112,7 @@ class BuildClient {
     }
 
     final currentIndex = tags.findAll {
-      it.startsWith(version)
+      it.startsWith("${version}-")
     }.collect {
       it.replaceAll(/${version}-?.*-(\d+)-?.*/, '$1') as Integer
     }.sort().reverse()[0]
