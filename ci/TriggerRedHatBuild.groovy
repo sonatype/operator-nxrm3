@@ -13,8 +13,6 @@
 import groovyx.net.http.HttpBuilder
 import groovyx.net.http.HttpException
 
-println args
-
 if (args.size() < 3) {
   System.err.println('Usage: groovy TriggerRedhatBuild.groovy <version> <projectId> <apiKey>')
   System.exit(1)
@@ -116,7 +114,7 @@ class BuildClient {
     final currentIndex = tags.findAll {
       it.startsWith(version)
     }.collect {
-      it.replaceAll(/${version}-(\d+)-?.*/, '$1') as Integer
+      it.replaceAll(/${version}-?.*-(\d+)-?.*/, '$1') as Integer
     }.sort().reverse()[0]
 
     final nextIndex =((currentIndex ?: 0) as Integer) + 1
