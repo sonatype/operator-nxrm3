@@ -48,10 +48,6 @@ node('ubuntu-zion') {
   }
 }
 
-def getShortVersion(version) {
-  return version.split('-')[0]
-}
-
 def readVersion() {
   def content = readFile 'build/Dockerfile'
   for (line in content.split('\n')) {
