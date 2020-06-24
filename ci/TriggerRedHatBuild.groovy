@@ -13,7 +13,7 @@
 import groovyx.net.http.HttpBuilder
 import groovyx.net.http.HttpException
 
-if (args.size() < 3) {
+if (args.size() != 3) {
   System.err.println('Usage: groovy TriggerRedhatBuild.groovy <version> <projectId> <apiKey>')
   System.exit(1)
 }
@@ -46,7 +46,7 @@ class BuildClient {
    */
   void run() {
     final nextTag = getNextTag(version)
-    println "Triggering build as ${nextTag}"
+    println "Triggering Red Hat build as ${nextTag}"
 
     final buildStatus = build(nextTag)
 
@@ -143,7 +143,7 @@ class BuildClient {
     final endTime = calcCutoffTime(System.currentTimeMillis(), TIMEOUT_MINUTES)
 
     while (System.currentTimeMillis() < endTime) {
-      println 'Waiting for build to finish.'
+      println 'Waiting for Red Hat build to finish.'
       sleep 60000
 
       try {
