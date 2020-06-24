@@ -129,7 +129,7 @@ metadata:
       and build artifacts across your DevOps pipeline.
     containerImage: registry.connect.redhat.com/sonatype/nxrm-operator-certified:3.24.0-7
     repository: https://github.com/sonatype/operator-nxrm3
-    createdAt: 2020-04-21
+    createdAt: 2020-06-20
     support: Sonatype
     certified: "true"
   name: nxrm-operator-certified.v3.24.0-7
