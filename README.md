@@ -44,4 +44,26 @@ and push your operator image to quay.io to make it available for installation.
    1. Create the bundle zip file: `./scripts/bundle.sh`
    2. Upload the zip to "Operator Config" of
      https://connect.redhat.com/project/3843071/view
-   3. Once it successfully scans, which can take up to an hour, publish the config.
+   3. Once it passes the scan, which can take up to an hour, publish the config.
+
+## Building for Production in Jenkins
+
+The Jenkins build will trigger a build service at Red Hat to build and publish
+a certified image for our operator in their registry. This build also bundles
+up a zip artifact which will need to be published to Red Hat manually to finish
+the deployment.
+
+1. Ensure that the build/Dockerfile `version` label references the short version
+   number of the application image as this is used to generate the version of
+   the new operator image we'll build.
+2. Ensure that the `operator.yaml` and the latest CSV yaml files reference the
+   anticipated new version of the operator image we'll be building.
+3. Run the Jenkins deployment build for this project.
+4. Download the bundle zip from the build artifacts, and upload the zip to
+   "Operator Config" of https://connect.redhat.com/project/3843071/view
+5. Once it passes the scan, which can take up to an hour, publish the config.
+
+Note: If the anticipated operator version gets out of sync with the metadata,
+you can commit updates to the versions in the metadata, and build again while
+checking the option in the build to `skip_red_hat_build`, so the operator
+image doesn't again get updated.
