@@ -55,6 +55,9 @@ spec:
       imagePullSecrets:
         - name: {{ template "nexus.name" . }}
       {{- end }}
+      {{- if .Values.deployment.terminationGracePeriodSeconds }}
+      terminationGracePeriodSeconds: {{ .Values.deployment.terminationGracePeriodSeconds }}
+      {{- end }}
       containers:
         - name: nexus
           image: {{ .Values.nexus.imageName }}
