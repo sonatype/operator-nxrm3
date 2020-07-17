@@ -56,8 +56,6 @@ spec:
     resources: {}
     securityContext:
       fsGroup: 2000
-    service:
-      type: NodePort
   nexusProxyRoute:
     annotations: null
     enabled: false
