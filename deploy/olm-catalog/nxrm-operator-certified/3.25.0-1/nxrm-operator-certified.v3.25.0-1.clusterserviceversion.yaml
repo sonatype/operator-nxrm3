@@ -211,6 +211,7 @@ spec:
     | `config.enabled`                            | Enable configmap                    | `false`                                 |
     | `config.mountPath`                          | Path to mount the config            | `/sonatype-nexus-conf`                  |
     | `config.data`                               | Configmap data                      | `nil`                                   |
+    | `deployment.terminationGracePeriodSeconds`  | Time to allow for clean shutdown    | 120                                     |
     | `deployment.annotations`                    | Annotations to enhance deployment configuration  | `{}`                       |
     | `deployment.initContainers`                 | Init containers to run before main containers  | `nil`                        |
     | `deployment.postStart.command`              | Command to run after starting the nexus container  | `nil`                    |
