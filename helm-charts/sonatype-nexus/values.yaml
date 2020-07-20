@@ -31,7 +31,7 @@ nexus:
   - name: NEXUS_SECURITY_RANDOMPASSWORD
     value: "false"
   hostAliases: []
-  imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.24.0-ubi-1
+  imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.25.0-ubi-1
   imagePullPolicy: IfNotPresent
   imagePullSecret: ""
   livenessProbe:
@@ -49,8 +49,6 @@ nexus:
   resources: {}
   securityContext:
     fsGroup: 2000
-  service:
-    type: NodePort
 nexusProxyRoute:
   annotations: null
   enabled: false
