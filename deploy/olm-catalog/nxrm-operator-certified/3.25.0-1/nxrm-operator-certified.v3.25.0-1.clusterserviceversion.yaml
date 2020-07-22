@@ -369,7 +369,7 @@ spec:
   maintainers:
   - email: support@sonatype.com
     name: Sonatype
-  maturity: alpha
+  maturity: stable
   provider:
     name: Sonatype
   version: 3.25.0-1
