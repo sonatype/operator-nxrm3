@@ -171,8 +171,7 @@ spec:
 
     Once the server instance is created by the operator and running,
     you'll want to expose the service as you see fit:
-    1. Create the service: `kubectl expose deployment --type=NodePort <full name of the new pod>`
-    2. Create a Route to that service for nexus.port (8081).
+    1. Create a Route to that service for nexus.port (8081).
 
     By default, the Nexus Repository starts up in OSS mode until a license is installed.
 
