@@ -30,4 +30,4 @@ spec:
             - name: OPERATOR_NAME
               value: "nxrm-operator-certified"
             - name: RELATED_IMAGE_NEXUS
-              value: registry.connect.redhat.com/sonatype/nexus-repository-manager:{{ubiVersion}}
+              value: registry.connect.redhat.com/sonatype/nexus-repository-manager:{{certAppVersion}}

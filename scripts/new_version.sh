@@ -1,23 +1,23 @@
 #!/bin/sh
 
 if [ $# != 3 ]; then
-    echo "Usage: $0 <shortVersion> <ubiVersion> <operatorVersion>"
+    echo "Usage: $0 <shortVersion> <certAppVersion> <operatorVersion>"
     echo "Ex: $0 3.20.0 3.20.0-ubi-1 3.20.0-1"
     exit 1
 fi
 
 shortVersion=$1
-ubiVersion=$2
+certAppVersion=$2
 operatorVersion=$3
 
-oldOperatorVersion=$(cat deploy/olm-catalog/nxrm-operator-certified/nxrm-operator-certified.package.yaml \
+replacedOperatorVersion=$(cat deploy/olm-catalog/nxrm-operator-certified/nxrm-operator-certified.package.yaml \
     | grep currentCSV: | sed 's/.*v//')
 
 function applyTemplate {
     sed "s/{{shortVersion}}/${shortVersion}/g" \
-    | sed "s/{{ubiVersion}}/${ubiVersion}/g" \
+    | sed "s/{{certAppVersion}}/${certAppVersion}/g" \
     | sed "s/{{operatorVersion}}/${operatorVersion}/g" \
-    | sed "s/{{oldOperatorVersion}}/${oldOperatorVersion}/g"
+    | sed "s/{{replacedOperatorVersion}}/${replacedOperatorVersion}/g"
 }
 
 cat scripts/templates/Chart.yaml \

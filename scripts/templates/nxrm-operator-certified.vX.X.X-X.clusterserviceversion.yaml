@@ -54,7 +54,7 @@ metadata:
                 }
               ],
               "hostAliases": [],
-              "imageName": "registry.connect.redhat.com/sonatype/nexus-repository-manager:{{ubiVersion}}",
+              "imageName": "registry.connect.redhat.com/sonatype/nexus-repository-manager:{{certAppVersion}}",
               "imagePullPolicy": "IfNotPresent",
               "imagePullSecret": "",
               "livenessProbe": {
@@ -268,7 +268,7 @@ spec:
                 - name: OPERATOR_NAME
                   value: nxrm-operator-certified
                 - name: RELATED_IMAGE_NEXUS
-                  value: registry.connect.redhat.com/sonatype/nexus-repository-manager:{{ubiVersion}}
+                  value: registry.connect.redhat.com/sonatype/nexus-repository-manager:{{certAppVersion}}
                 image: registry.connect.redhat.com/sonatype/nxrm-operator-certified:{{operatorVersion}}
                 imagePullPolicy: Always
                 name: nxrm-operator-certified
@@ -372,4 +372,4 @@ spec:
   provider:
     name: Sonatype
   version: {{operatorVersion}}
-  replaces: nxrm-operator-certified.v{{oldOperatorVersion}}
+  replaces: nxrm-operator-certified.v{{replacedOperatorVersion}}
