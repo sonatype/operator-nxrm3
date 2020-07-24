@@ -10,7 +10,8 @@ operatorVersion=$1
 certAppVersion=$2
 
 shortVersion=$(echo $1 | sed 's/-.*//')
-replacedOperatorVersion=$(cat deploy/olm-catalog/nxrm-operator-certified/nxrm-operator-certified.package.yaml \
+replacedOperatorVersion=$(cat
+    deploy/olm-catalog/nxrm-operator-certified/nxrm-operator-certified.package.yaml \
     | grep currentCSV: | sed 's/.*v//')
 
 function applyTemplate {
