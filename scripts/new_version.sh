@@ -1,15 +1,17 @@
 #!/bin/sh
 
-if [ $# != 4 ]; then
-    echo "Usage: $0 <shortVersion> <ubiVersion> <operatorVersion> <oldOperatorVersion>"
-    echo "Ex: $0 3.20.0 3.20.0-ubi-1 3.20.0-1 3.19.0-1"
+if [ $# != 3 ]; then
+    echo "Usage: $0 <shortVersion> <ubiVersion> <operatorVersion>"
+    echo "Ex: $0 3.20.0 3.20.0-ubi-1 3.20.0-1"
     exit 1
 fi
 
 shortVersion=$1
 ubiVersion=$2
 operatorVersion=$3
-oldOperatorVersion=$4
+
+oldOperatorVersion=$(cat deploy/olm-catalog/nxrm-operator-certified/nxrm-operator-certified.package.yaml \
+    | grep currentCSV: | sed 's/.*v//')
 
 function applyTemplate {
     sed "s/{{shortVersion}}/${shortVersion}/g" \
