@@ -1,3 +1,4 @@
+# {{templateWarning}}
 channels:
 - currentCSV: nxrm-operator-certified.v{{operatorVersion}}
   name: stable

@@ -1,3 +1,4 @@
+# {{templateWarning}}
 FROM quay.io/operator-framework/helm-operator:v0.16.0
 
 # Required OpenShift Labels
