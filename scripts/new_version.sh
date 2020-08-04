@@ -1,7 +1,5 @@
 #!/bin/sh
 
-set -x
-
 if [ $# != 2 ]; then
     echo "Usage: $0 <operatorVersion> <certAppVersion>"
     echo "Ex: $0 3.20.0-1 3.20.0-ubi-1"
