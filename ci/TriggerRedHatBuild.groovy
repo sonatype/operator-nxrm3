@@ -21,7 +21,7 @@ if (args.size() != 3) {
 new BuildClient(*args).run()
 
 class BuildClient {
-  private static final Integer TIMEOUT_MINUTES = 20
+  private static final Integer TIMEOUT_MINUTES = 30
 
   private final String version
   private final String projectId
