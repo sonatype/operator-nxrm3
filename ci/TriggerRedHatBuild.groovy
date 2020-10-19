@@ -107,6 +107,10 @@ class BuildClient {
   * @return the full new version string to submit for the next build
   */
   private String getNextTag(String version) {
+    if (version =~ /.*-.*/) {
+      return version
+    }
+
     final tags = getTags()*.name.collectMany {
       it.split(', ').collect()
     }
