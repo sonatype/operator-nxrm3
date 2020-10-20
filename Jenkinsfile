@@ -11,6 +11,7 @@ properties([
   parameters([
     booleanParam(defaultValue: false, description: 'Force Red Hat Certified Build for a non-master branch', name: 'force_red_hat_build'),
     booleanParam(defaultValue: false, description: 'Skip Red Hat Certified Build', name: 'skip_red_hat_build'),
+    string(defaultValue: '', description: 'Override automatic version assignment', name: 'version')
   ])
 ])
 
@@ -26,7 +27,7 @@ node('ubuntu-zion') {
 
     isMaster = checkoutDetails.GIT_BRANCH in ['origin/master', 'master']
 
-    version = readVersion()
+    version = params.version ?: readVersion()
   }
 
   stage('Trigger Red Hat Certified Image Build') {
