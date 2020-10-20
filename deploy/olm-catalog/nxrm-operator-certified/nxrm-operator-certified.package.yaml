@@ -1,6 +1,6 @@
 # DO NOT MODIFY. This is produced by template.
 channels:
-- currentCSV: nxrm-operator-certified.v3.28.0-2
+- currentCSV: nxrm-operator-certified.v3.28.1-1
   name: stable
 defaultChannel: stable
 packageName: nxrm-operator-certified
