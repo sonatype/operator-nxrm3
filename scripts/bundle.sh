@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# built from https://redhat-connect.gitbook.io/partner-guide-for-red-hat-openshift-and-container/certify-your-operator/upgrading-your-operator
+
 # stage a clean bundle directory
 rm -rf bundle
 mkdir bundle
