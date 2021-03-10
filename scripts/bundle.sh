@@ -1,16 +1,37 @@
 #!/bin/sh
 
+# stage a clean bundle directory
 rm -rf bundle
-rm -f nxrm-operator-certified-metadata.zip
-
 mkdir bundle
 
-CSVS=$(find deploy/olm-catalog -name '*.clusterserviceversion.yaml')
+# copy the crd
+cp -v deploy/crds/sonatype.com_nexusrepos_crd.yaml bundle
 
-cp -v $CSVS bundle
-cp -v deploy/olm-catalog/nxrm-operator-certified/nxrm-operator-certified.package.yaml bundle
-cp -v deploy/crds/sonatype.com_nexusrepos_crd.yaml bundle/nxrm-operator-certified.crd.yaml
+# copy every version of the csv and the package yaml
+cp -rv deploy/olm-catalog/nxrm-operator-certified/* bundle
 
-(cd bundle; zip -rv ../nxrm-operator-certified-metadata.zip .)
+# distribute crd into each version directory
+for d in $(find bundle/* -type d); do
+    #cp -v deploy/crds/sonatype.com_nexusrepos_crd.yaml ${d}/nxrm-operator-certified.crd.yaml
+    cp -v deploy/crds/sonatype.com_nexusrepos_crd.yaml ${d}
+done
 
-rm -rf bundle
+# restructure and generate docker file for the bundle
+(
+    cd bundle;
+    latest_version=$(find . -type d -maxdepth 1| sort | tail -1)
+    opm alpha bundle generate -d $latest_version -u $latest_version
+)
+
+# append more standard labels
+cat >> bundle/bundle.Dockerfile <<EOF
+
+LABEL com.redhat.openshift.versions="v4.5,v4.6"
+LABEL com.redhat.delivery.backport=true
+LABEL com.redhat.delivery.operator.bundle=true
+EOF
+
+# build the bundle docker image
+(cd bundle; docker build . -f bundle.Dockerfile)
+
+# rm -rf bundle
