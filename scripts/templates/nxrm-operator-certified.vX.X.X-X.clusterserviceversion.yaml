@@ -168,6 +168,10 @@ spec:
     Organizations need a central binary and build artifact repository to manage dependencies
     across the entire software supply chain.
 
+    ## Limitations
+
+    High Availability Clustering (HA-C) is not supported for Nexus Repository Pro for OpenShift.
+
     ## Usage
 
     Once the server instance is created by the operator and running,
