@@ -17,7 +17,7 @@ bundleNumber=$1
 projectId=$2
 apiKey=$3
 
-set -x -e
+set -e
 
 # stage a clean bundle directory
 rm -rf bundle
@@ -38,9 +38,10 @@ done
 
 cd bundle;
 
-# TODO sort will someday break when versions roll to more digits
-latest_version=$(find . -type d -maxdepth 1| sort | tail -1 | sed 's!\./!!')
-echo $latest_version
+latest_version=$(cat nxrm-operator-certified.package.yaml \
+                     | grep currentCSV: \
+                     | sed 's/.*nxrm-operator-certified.v//')
+
 opm alpha bundle generate -d $latest_version -u $latest_version
 mv bundle.Dockerfile bundle-$latest_version.Dockerfile
 
