@@ -60,7 +60,7 @@ docker tag \
        nxrm-operator-certified-bundle:$latest_version \
        scan.connect.redhat.com/${projectId}/nxrm-certified-operator-bundle:${latest_version}-${bundleNumber}
 
+# push to red hat scan service
 echo $apiKey | docker login -u unused --password-stdin scan.connect.redhat.com
-
 docker push \
        scan.connect.redhat.com/${projectId}/nxrm-certified-operator-bundle:${latest_version}-${bundleNumber}
