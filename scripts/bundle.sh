@@ -54,13 +54,13 @@ EOF
 # build the bundle docker image
 docker build . \
        -f bundle-$latest_version.Dockerfile \
-       -t nxrm-operator-certified-bundle:$latest_version
+       -t nxrm-operator-bundle:$latest_version
 
 docker tag \
-       nxrm-operator-certified-bundle:$latest_version \
-       scan.connect.redhat.com/${projectId}/nxrm-certified-operator-bundle:${latest_version}-${bundleNumber}
+       nxrm-operator-bundle:$latest_version \
+       scan.connect.redhat.com/${projectId}/nxrm-operator-bundle:${latest_version}-${bundleNumber}
 
 # push to red hat scan service
 echo $apiKey | docker login -u unused --password-stdin scan.connect.redhat.com
 docker push \
-       scan.connect.redhat.com/${projectId}/nxrm-certified-operator-bundle:${latest_version}-${bundleNumber}
+       scan.connect.redhat.com/${projectId}/nxrm-operator-bundle:${latest_version}-${bundleNumber}
