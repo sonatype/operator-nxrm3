@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# built from https://redhat-connect.gitbook.io/partner-guide-for-red-hat-openshift-and-container/certify-your-operator/upgrading-your-operator
+
 if [ $# != 3 ]; then
     cat <<EOF
 Usage: $0 <bundleNumber> <projectId> <apiKey>
@@ -16,8 +18,6 @@ projectId=$2
 apiKey=$3
 
 set -x -e
-
-# built from https://redhat-connect.gitbook.io/partner-guide-for-red-hat-openshift-and-container/certify-your-operator/upgrading-your-operator
 
 # stage a clean bundle directory
 rm -rf bundle
@@ -38,7 +38,7 @@ done
 
 cd bundle;
 
-# TODO sort will only work to a point
+# TODO sort will someday break when versions roll to more digits
 latest_version=$(find . -type d -maxdepth 1| sort | tail -1 | sed 's!\./!!')
 echo $latest_version
 opm alpha bundle generate -d $latest_version -u $latest_version
