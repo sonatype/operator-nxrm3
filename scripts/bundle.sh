@@ -1,5 +1,16 @@
 #!/bin/sh
 
+if [ $# != 3 ]; then
+    echo "Usage: $0 <bundleNumber> <projectId> <apiKey>"
+    exit 1
+fi
+
+bundleNumber=$1
+projectId=$2
+apiKey=$3
+
+set -x -e
+
 # built from https://redhat-connect.gitbook.io/partner-guide-for-red-hat-openshift-and-container/certify-your-operator/upgrading-your-operator
 
 # stage a clean bundle directory
@@ -14,26 +25,38 @@ cp -rv deploy/olm-catalog/nxrm-operator-certified/* bundle
 
 # distribute crd into each version directory
 for d in $(find bundle/* -type d); do
-    #cp -v deploy/crds/sonatype.com_nexusrepos_crd.yaml ${d}/nxrm-operator-certified.crd.yaml
     cp -v deploy/crds/sonatype.com_nexusrepos_crd.yaml ${d}
 done
 
 # restructure and generate docker file for the bundle
-(
-    cd bundle;
-    latest_version=$(find . -type d -maxdepth 1| sort | tail -1)
-    opm alpha bundle generate -d $latest_version -u $latest_version
-)
 
-# append more standard labels
-cat >> bundle/bundle.Dockerfile <<EOF
+cd bundle;
 
+# TODO sort will only work to a point
+latest_version=$(find . -type d -maxdepth 1| sort | tail -1 | sed 's!\./!!')
+echo $latest_version
+opm alpha bundle generate -d $latest_version -u $latest_version
+mv bundle.Dockerfile bundle-$latest_version.Dockerfile
+
+# append more labels
+cat >> bundle-$latest_version.Dockerfile <<EOF
 LABEL com.redhat.openshift.versions="v4.5,v4.6"
 LABEL com.redhat.delivery.backport=true
 LABEL com.redhat.delivery.operator.bundle=true
 EOF
 
 # build the bundle docker image
-(cd bundle; docker build . -f bundle.Dockerfile)
+docker build . \
+       -f bundle-$latest_version.Dockerfile \
+       -t nxrm-operator-certified:$latest_version
+
+docker tag \
+       nxrm-operator-certified:$latest_version \
+       scan.connect.redhat.com/${projectId}/nxrm-certified-operator-bundle:${latest_version}-${bundleNumber}
+
+echo $apiKey | docker login -u unused --password-stdin scan.connect.redhat.com
+
+docker push \
+       scan.connect.redhat.com/${projectId}/nxrm-certified-operator-bundle:${latest_version}-${bundleNumber}
 
 # rm -rf bundle
