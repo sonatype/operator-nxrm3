@@ -373,4 +373,4 @@ spec:
   provider:
     name: Sonatype
   version: 3.28.1-1
-  replaces: nxrm-operator-certified.v3.28.0-2
+  replaces: nxrm-operator-certified.v3.27.0-1
