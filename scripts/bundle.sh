@@ -58,5 +58,3 @@ echo $apiKey | docker login -u unused --password-stdin scan.connect.redhat.com
 
 docker push \
        scan.connect.redhat.com/${projectId}/nxrm-certified-operator-bundle:${latest_version}-${bundleNumber}
-
-# rm -rf bundle
