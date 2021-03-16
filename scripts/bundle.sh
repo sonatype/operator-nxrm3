@@ -17,7 +17,7 @@ bundleNumber=$1
 projectId=$2
 apiKey=$3
 
-set -e
+set -e -x
 
 # stage a clean bundle directory
 rm -rf bundle
@@ -41,6 +41,11 @@ cd bundle;
 latest_version=$(cat nxrm-operator-certified.package.yaml \
                      | grep currentCSV: \
                      | sed 's/.*nxrm-operator-certified.v//')
+
+if [ "x$latest_version" = "x" ]; then
+    echo "Could not determine latest version from package yaml."
+    exit 1
+fi
 
 opm alpha bundle generate -d $latest_version -u $latest_version
 mv bundle.Dockerfile bundle-$latest_version.Dockerfile
