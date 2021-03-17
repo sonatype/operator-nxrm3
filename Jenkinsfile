@@ -41,7 +41,7 @@ node('ubuntu-zion') {
   }
 
   stage('Build') {
-    OsTools.runSafe(this, 'scripts/bundle.sh')
+    // OsTools.runSafe(this, 'scripts/bundle.sh')
   }
 
   stage('Archive') {
