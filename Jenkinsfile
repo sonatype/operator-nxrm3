@@ -39,14 +39,6 @@ node('ubuntu-zion') {
       }
     }
   }
-
-  stage('Build') {
-    // OsTools.runSafe(this, 'scripts/bundle.sh')
-  }
-
-  stage('Archive') {
-      archiveArtifacts artifacts: archiveName, onlyIfSuccessful: true
-  }
 }
 
 def readVersion() {
