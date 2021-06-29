@@ -74,7 +74,6 @@ metadata:
               },
               "resources": {},
               "securityContext": {
-                "fsGroup": 2000
               },
               "service": {
                 "type": "NodePort"
@@ -192,7 +191,7 @@ spec:
     | `nexus.nexusPort`                           | Internal port for Nexus service     | `8081`                                  |
     | `nexus.service.type`                        | Service for Nexus                   |`NodePort`                                |
     | `nexus.service.clusterIp`                   | Specific cluster IP when service type is cluster IP. Use None for headless service |`nil`   |
-    | `nexus.securityContext`                     | Security Context (for enabling official image use `fsGroup: 2000`) | `{}`     |
+    | `nexus.securityContext`                     | Security Context |
     | `nexus.labels`                              | Service labels                      | `{}`                                    |
     | `nexus.podAnnotations`                      | Pod Annotations                     | `{}`
     | `nexus.livenessProbe.initialDelaySeconds`   | LivenessProbe initial delay         | 30                                      |
