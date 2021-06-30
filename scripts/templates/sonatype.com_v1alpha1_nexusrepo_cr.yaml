@@ -56,7 +56,6 @@ spec:
       periodSeconds: 30
     resources: {}
     securityContext:
-      fsGroup: 2000
   nexusProxyRoute:
     annotations: null
     enabled: false
