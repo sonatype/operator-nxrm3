@@ -9,14 +9,14 @@ import com.sonatype.jenkins.pipeline.OsTools
 
 properties([
   parameters([
-    booleanParam(defaultValue: false, description: 'Force Red Hat Certified Build for a non-master branch', name: 'force_red_hat_build'),
+    booleanParam(defaultValue: false, description: 'Force Red Hat Certified Build for a non-main branch', name: 'force_red_hat_build'),
     booleanParam(defaultValue: false, description: 'Skip Red Hat Certified Build', name: 'skip_red_hat_build'),
     string(defaultValue: '', description: 'Override automatic version assignment', name: 'version')
   ])
 ])
 
 node('ubuntu-zion') {
-  def version, isMaster
+  def version, isMain
   def organization = 'sonatype',
       archiveName = 'nxrm-operator-certified-metadata.zip'
 
@@ -25,13 +25,13 @@ node('ubuntu-zion') {
 
     def checkoutDetails = checkout scm
 
-    isMaster = checkoutDetails.GIT_BRANCH in ['origin/master', 'master']
+    isMain = checkoutDetails.GIT_BRANCH in ['origin/main', 'main']
 
     version = params.version ?: readVersion()
   }
 
   stage('Trigger Red Hat Certified Image Build') {
-    if ((! params.skip_red_hat_build) && (isMaster || params.force_red_hat_build)) {
+    if ((! params.skip_red_hat_build) && (isMain || params.force_red_hat_build)) {
       withCredentials([
           string(credentialsId: 'operator-nxrm-rh-build-project-id', variable: 'PROJECT_ID'),
           string(credentialsId: 'rh-build-service-api-key', variable: 'API_KEY')]) {
