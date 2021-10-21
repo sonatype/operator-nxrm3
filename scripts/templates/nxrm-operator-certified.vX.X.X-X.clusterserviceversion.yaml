@@ -132,6 +132,7 @@ metadata:
     createdAt: 2020-07-17
     support: Sonatype
     certified: "true"
+    olm.skipRange: "<{{operatorVersion}}"
   name: nxrm-operator-certified.v{{operatorVersion}}
   namespace: placeholder
 spec:
@@ -376,4 +377,3 @@ spec:
   provider:
     name: Sonatype
   version: {{operatorVersion}}
-  replaces: nxrm-operator-certified.v{{replacedOperatorVersion}}
