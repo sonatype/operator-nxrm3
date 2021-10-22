@@ -171,6 +171,8 @@ spec:
     ## Limitations
 
     High Availability Clustering (HA-C) is not supported for Nexus Repository Pro for OpenShift.
+    
+    This operator will be released on a quarterly basis.
 
     ## Usage
 
