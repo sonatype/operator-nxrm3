@@ -1,4 +1,5 @@
 # {{templateWarning}}
+---
 apiVersion: sonatype.com/v1alpha1
 kind: NexusRepo
 metadata:
@@ -33,11 +34,11 @@ spec:
   nexus:
     dockerPort: 5003
     env:
-    - name: install4jAddVmParams
-      value: -Xms1200M -Xmx1200M -XX:MaxDirectMemorySize=2G -XX:+UnlockExperimentalVMOptions
-        -XX:+UseCGroupMemoryLimitForHeap
-    - name: NEXUS_SECURITY_RANDOMPASSWORD
-      value: "false"
+      - name: install4jAddVmParams
+        value: -Xms1200M -Xmx1200M -XX:MaxDirectMemorySize=2G -XX:+UnlockExperimentalVMOptions
+          -XX:+UseCGroupMemoryLimitForHeap
+      - name: NEXUS_SECURITY_RANDOMPASSWORD
+        value: "false"
     hostAliases: []
     imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager:{{certAppVersion}}
     imagePullPolicy: IfNotPresent
@@ -81,10 +82,9 @@ spec:
     enabled: false
     labels: {}
     ports:
-    - name: nexus-service
-      port: 80
-      targetPort: 80
+      - name: nexus-service
+        port: 80
+        targetPort: 80
   statefulset:
     enabled: false
   tolerations: []
-
