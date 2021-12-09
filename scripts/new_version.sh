@@ -23,10 +23,10 @@ if [ "$1" = "image" ]; then
     certAppVersion=$3
 
     function applyTemplate {
-        sed "s/{{shortVersion}}/${shortVersion}/g" \
-        | sed "s/{{certAppVersion}}/${certAppVersion}/g" \
-        | sed "s/{{operatorVersion}}/${operatorVersion}/g" \
-        | sed "s/{{templateWarning}}/DO NOT MODIFY. This is produced by template./g"
+        sed "s!{{shortVersion}}!${shortVersion}!g" \
+        | sed "s!{{certAppVersion}}!${certAppVersion}!g" \
+        | sed "s!{{operatorVersion}}!${operatorVersion}!g" \
+        | sed "s!{{templateWarning}}!DO NOT MODIFY. This is produced by template.!g"
     }
 
     cat scripts/templates/Chart.yaml \
@@ -51,11 +51,11 @@ if [ "$1" = "bundle" ]; then
     certAppSHA=$4
 
     function applyTemplate {
-        sed "s/{{shortVersion}}/${shortVersion}/g" \
-        | sed "s/{{certAppSHA}}/${certAppSHA}/g" \
-        | sed "s/{{operatorSHA}}/${operatorSHA}/g" \
-        | sed "s/{{operatorVersion}}/${operatorVersion}/g" \
-        | sed "s/{{templateWarning}}/DO NOT MODIFY. This is produced by template./g"
+        sed "s!{{shortVersion}}!${shortVersion}!g" \
+        | sed "s!{{certAppSHA}}!${certAppSHA}!g" \
+        | sed "s!{{operatorSHA}}!${operatorSHA}!g" \
+        | sed "s!{{operatorVersion}}!${operatorVersion}!g" \
+        | sed "s!{{templateWarning}}!DO NOT MODIFY. This is produced by template.!g"
     }
 
     cat scripts/templates/nxrm-operator-certified.package.yaml \
