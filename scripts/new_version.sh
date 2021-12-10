@@ -4,7 +4,7 @@ if [ $# -lt 1 ]; then
     echo "Usage: $0 image <operatorVersion> <certAppVersion>"
     echo "Usage: $0 bundle <operatorVersion> <operatorImageSHA> <certAppImageSHA>"
     echo "Ex: $0 image 3.20.0-1 3.20.0-ubi-1"
-    echo "Ex: $0 bundle 3.20.0-1 sha256:... sha256:... "
+    echo "Ex: $0 bundle 3.20.0-1 registry...@sha256:ab12... registry...@sha256:ab12..."
     exit 1
 fi
 
@@ -42,7 +42,7 @@ fi
 if [ "$1" = "bundle" ]; then
     if [ $# -ne 4 ]; then
         echo "Usage: $0 bundle <operatorVersion> <operatorImageSHA> <certAppImageSHA>"
-        echo "Ex: $0 bundle 3.20.0-1 ab2332... cef332..."
+        echo "Ex: $0 bundle 3.20.0-1 registry...@sha256:ab12... registry...@sha256:ab12..."
         exit 1
     fi
 
