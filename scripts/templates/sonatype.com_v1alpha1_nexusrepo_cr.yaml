@@ -40,7 +40,7 @@ spec:
       - name: NEXUS_SECURITY_RANDOMPASSWORD
         value: "false"
     hostAliases: []
-    imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager:{{certAppVersion}}
+    imageName: {{certAppSHA}}
     imagePullPolicy: IfNotPresent
     imagePullSecret: ""
     livenessProbe:
