@@ -1,4 +1,5 @@
 # DO NOT MODIFY. This is produced by template.
+---
 apiVersion: sonatype.com/v1alpha1
 kind: NexusRepo
 metadata:
@@ -33,13 +34,13 @@ spec:
   nexus:
     dockerPort: 5003
     env:
-    - name: install4jAddVmParams
-      value: -Xms1200M -Xmx1200M -XX:MaxDirectMemorySize=2G -XX:+UnlockExperimentalVMOptions
-        -XX:+UseCGroupMemoryLimitForHeap
-    - name: NEXUS_SECURITY_RANDOMPASSWORD
-      value: "false"
+      - name: install4jAddVmParams
+        value: -Xms1200M -Xmx1200M -XX:MaxDirectMemorySize=2G -XX:+UnlockExperimentalVMOptions
+          -XX:+UseCGroupMemoryLimitForHeap
+      - name: NEXUS_SECURITY_RANDOMPASSWORD
+        value: "false"
     hostAliases: []
-    imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.35.0-ubi-1
+    imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager@sha256:e4db2649715b00f266990480444fe756685777a9c4b5250ebc9b19fb390b201a
     imagePullPolicy: IfNotPresent
     imagePullSecret: ""
     livenessProbe:
@@ -81,10 +82,9 @@ spec:
     enabled: false
     labels: {}
     ports:
-    - name: nexus-service
-      port: 80
-      targetPort: 80
+      - name: nexus-service
+        port: 80
+        targetPort: 80
   statefulset:
     enabled: false
   tolerations: []
-

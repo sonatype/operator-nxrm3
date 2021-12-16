@@ -1,4 +1,5 @@
 # DO NOT MODIFY. This is produced by template.
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,7 +18,7 @@ spec:
       containers:
         - name: nxrm-operator-certified
           # Replace this with the built image name
-          image: registry.connect.redhat.com/sonatype/nxrm-operator-certified:3.35.0-1
+          image: registry.connect.redhat.com/sonatype/nxrm-operator-certified@sha256:8f85f2a94a61bb8e05cb6f42254b137a13dea4babcc1e29c8fa26bfeb81e9348
           imagePullPolicy: Always
           env:
             - name: WATCH_NAMESPACE
@@ -31,4 +32,4 @@ spec:
             - name: OPERATOR_NAME
               value: "nxrm-operator-certified"
             - name: RELATED_IMAGE_NEXUS
-              value: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.35.0-ubi-1
+              value: registry.connect.redhat.com/sonatype/nexus-repository-manager@sha256:e4db2649715b00f266990480444fe756685777a9c4b5250ebc9b19fb390b201a
