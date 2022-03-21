@@ -47,8 +47,8 @@ metadata:
               "dockerPort": 5003,
               "env": [
                 {
-                  "name": "install4jAddVmParams",
-                  "value": "-Xms1200M -Xmx1200M -XX:MaxDirectMemorySize=2G -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
+                  "name": "INSTALL4J_ADD_VM_PARAMS",
+                  "value": "-Xms2703M -Xmx2703M -XX:MaxDirectMemorySize=2703M -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap"
                 },
                 {
                   "name": "NEXUS_SECURITY_RANDOMPASSWORD",
@@ -189,7 +189,7 @@ spec:
     | ------------------------------------------  | ----------------------------------  | ----------------------------------------|
     | `statefulset.enabled`                       | Use statefulset instead of deployment | `false` |
     | `deploymentStrategy`                        | Deployment Strategy     |  `rollingUpdate` |
-    | `nexus.env`                                 | Nexus environment variables         | `[{install4jAddVmParams: -Xms1200M -Xmx1200M -XX:MaxDirectMemorySize=2G -XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap}]` |
+    | `nexus.env`                                 | Nexus environment variables         | `See example.` |
     | `nexus.resources`                           | Nexus resource requests and limits  | `{}`                                    |
     | `nexus.dockerPort`                          | Port to access docker               | `5003`                                  |
     | `nexus.nexusPort`                           | Internal port for Nexus service     | `8081`                                  |
