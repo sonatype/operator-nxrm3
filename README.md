@@ -19,7 +19,7 @@ and push your operator image to quay.io to make it available for installation.
 5. Make sure the new image on quay.io is public, so that the OpenShift
    cluster can pull it.
 6. Update the bundle files for the new image:
-   ` ./scripts/new_version.sh <new-operator-version> <operator-image-id> <certified-app-image-id>`
+   ` ./scripts/new_version.sh bundle <new-operator-version> <operator-image-id> <certified-app-image-id>`
 7. Install all the descriptors for the operator to your OpenShift cluster:
    1. `./scripts/install.sh`
 8. Expose the new Nexus Repo outside the cluster: 
