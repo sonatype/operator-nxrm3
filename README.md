@@ -23,12 +23,10 @@ and push your operator image to quay.io to make it available for installation.
 7. Install all the descriptors for the operator to your OpenShift cluster:
    1. `./scripts/install.sh`
 8. Expose the new Nexus Repo outside the cluster: 
-   1. `kubectl expose deployment --type=NodePort example-nexusrepo-sonatype-nexus`
-   2. Create a Route in OpenShift UI to the new service, port 8081.
+   1. Create a Route in OpenShift UI to the new service, port 8081.
 9. Visit the new URL shown on the Route page in OpenShift UI.
   
 ## Uninstall NXRM 3 from a Local Test Cluster
 
 1. Remove the route in the console.
-2. Remove exposed service in the console.
 3. Uninstall all the descriptors for the operator: `./scripts/uninstall.sh`.
