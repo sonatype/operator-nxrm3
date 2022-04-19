@@ -27,13 +27,13 @@ ingress:
 nexus:
   dockerPort: 5003
   env:
-    - name: install4jAddVmParams
-      value: -Xms1200M -Xmx1200M -XX:MaxDirectMemorySize=2G -XX:+UnlockExperimentalVMOptions
+    - name: INSTALL4J_ADD_VM_PARAMS
+      value: -Xms2703M -Xmx2703M -XX:MaxDirectMemorySize=2703M -XX:+UnlockExperimentalVMOptions
         -XX:+UseCGroupMemoryLimitForHeap
     - name: NEXUS_SECURITY_RANDOMPASSWORD
       value: "false"
   hostAliases: []
-  imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.37.3-ubi-1
+  imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager:3.38.1-ubi-1
   imagePullPolicy: IfNotPresent
   imagePullSecret: ""
   livenessProbe:
