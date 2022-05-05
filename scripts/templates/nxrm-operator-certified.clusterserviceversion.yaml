@@ -175,6 +175,24 @@ spec:
 
     This operator will be released on a quarterly basis.
 
+    ## Operator Intallation Considerations
+    
+    If you use the default configuration for the Nexus Repository Operator installation, 
+    please notice that on any new operator release, the corresponding deployments are 
+    also updated without user intervention, resulting in unscheduled downtime.
+
+    If you want to avoid this unscheduled downtime, please consider the next setup 
+    for the operator installation:
+    
+    * **Update Channel:** _stable_
+    * **Installation mode:** _A specific namespace on the cluster_
+    * **Installed Namespace:** _Create a new one to install the operator_
+        * You may also select an existing namespace, but as we are suggesting moving to a
+        manual approval, this will affect all the operators on the selected namespace
+    * **Update approval:** _Manual_
+        * Remeber that moving the approval to **Manual** will affect all the operators in 
+        a namespace
+
     ## Usage
 
     Once the server instance is created by the operator and running,
