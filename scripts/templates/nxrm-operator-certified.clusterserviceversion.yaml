@@ -175,6 +175,15 @@ spec:
 
     This operator will be released on a quarterly basis.
 
+    ## Controlling Automatic vs Manual Update
+    
+    If you use the default configuration for the Nexus Repository Operator installation, 
+    please notice that on any new operator release, the corresponding deployments are 
+    also updated without user intervention, resulting in unscheduled downtime.
+
+    If you want to avoid this unscheduled downtime, we recommend installing the operator 
+    into **its own namespace** with **manual approval** for updates.
+
     ## Usage
 
     Once the server instance is created by the operator and running,
