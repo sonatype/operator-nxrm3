@@ -33,7 +33,7 @@ metadata:
               "terminationGracePeriodSeconds": 120
             },
             "deploymentStrategy": {
-              "type": "Recreate",
+              "type": "Recreate"
             },
             "ingress": {
               "annotations": {},
