@@ -32,7 +32,9 @@ metadata:
               },
               "terminationGracePeriodSeconds": 120
             },
-            "deploymentStrategy": {},
+            "deploymentStrategy": {
+              "type": "Recreate"
+            },
             "ingress": {
               "annotations": {},
               "enabled": false,
@@ -197,7 +199,7 @@ spec:
     | Parameter                                   | Description                         | Default                                 |
     | ------------------------------------------  | ----------------------------------  | ----------------------------------------|
     | `statefulset.enabled`                       | Use statefulset instead of deployment | `false` |
-    | `deploymentStrategy`                        | Deployment Strategy     |  `rollingUpdate` |
+    | `deploymentStrategy.type`                   | Deployment Strategy     |  `Recreate` |
     | `nexus.env`                                 | Nexus environment variables         | `See example.` |
     | `nexus.resources`                           | Nexus resource requests and limits  | `{}`                                    |
     | `nexus.dockerPort`                          | Port to access docker               | `5003`                                  |

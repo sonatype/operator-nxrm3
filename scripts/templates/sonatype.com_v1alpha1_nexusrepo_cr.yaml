@@ -22,7 +22,8 @@ spec:
     preStart:
       command: null
     terminationGracePeriodSeconds: 120
-  deploymentStrategy: {}
+  deploymentStrategy:
+    type: Recreate
   ingress:
     annotations: {}
     enabled: false
