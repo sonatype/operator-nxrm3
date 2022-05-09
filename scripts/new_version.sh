@@ -22,7 +22,7 @@ if [ "$1" = "image" ]; then
     operatorVersion=$2
     certAppVersion=$3
 
-    function applyTemplate {
+    applyTemplate() {
         sed "s!{{shortVersion}}!${shortVersion}!g" \
         | sed "s!{{certAppVersion}}!${certAppVersion}!g" \
         | sed "s!{{operatorVersion}}!${operatorVersion}!g" \
@@ -50,7 +50,7 @@ if [ "$1" = "bundle" ]; then
     operatorSHA=$3
     certAppSHA=$4
 
-    function applyTemplate {
+    applyTemplate() {
         sed "s!{{shortVersion}}!${shortVersion}!g" \
         | sed "s!{{certAppSHA}}!${certAppSHA}!g" \
         | sed "s!{{operatorSHA}}!${operatorSHA}!g" \
