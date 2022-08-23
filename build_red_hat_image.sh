@@ -18,7 +18,6 @@
 # prerequisites:
 # * software:
 #   * https://github.com/redhat-openshift-ecosystem/openshift-preflight
-#   * https://podman.io/
 # * environment variables:
 #   * VERSION of the docker image  to build for the red hat registry
 #   * REGISTRY_PASSWORD from red hat config page for image
