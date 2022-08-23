@@ -2,3 +2,4 @@
 bundle
 *-metadata.zip
 artifacts
+*.log
