@@ -1,3 +1,5 @@
 **/.idea/
 bundle
 *-metadata.zip
+artifacts
+*.log

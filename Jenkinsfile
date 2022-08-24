@@ -4,49 +4,45 @@
  * "Sonatype" is a trademark of Sonatype, Inc.
  */
 @Library(['private-pipeline-library', 'jenkins-shared']) _
-import com.sonatype.jenkins.pipeline.GitHub
-import com.sonatype.jenkins.pipeline.OsTools
 
 properties([
   parameters([
-    booleanParam(defaultValue: false, description: 'Force Red Hat Certified Build for a non-main branch', name: 'force_red_hat_build'),
-    booleanParam(defaultValue: false, description: 'Skip Red Hat Certified Build', name: 'skip_red_hat_build'),
-    string(defaultValue: '', description: 'Override automatic version assignment', name: 'version')
-  ])
+    string(
+      name: 'version',
+      description: 'Version tag to apply to the image, like 3.41.0-1.'
+    ),
+  ]),
 ])
 
 node('ubuntu-zion') {
-  def version, isMain
-  def organization = 'sonatype',
-      archiveName = 'nxrm-operator-certified-metadata.zip'
+  try {
+    stage('Preparation') {
+      deleteDir()
 
-  stage('Preparation') {
-    deleteDir()
+      checkout scm
 
-    def checkoutDetails = checkout scm
-
-    isMain = checkoutDetails.GIT_BRANCH in ['origin/main', 'main']
-
-    version = params.version ?: readVersion()
-  }
-
-  stage('Trigger Red Hat Certified Image Build') {
-    if ((! params.skip_red_hat_build) && (isMain || params.force_red_hat_build)) {
+      sh 'docker system prune -a -f'
+      sh '''
+        wget -q -O preflight \
+          https://github.com/redhat-openshift-ecosystem/openshift-preflight/releases/download/1.4.0/preflight-linux-amd64
+        chmod 755 preflight
+      '''
+    }
+    stage('Build') {
       withCredentials([
-          string(credentialsId: 'operator-nxrm-rh-build-project-id', variable: 'PROJECT_ID'),
-          string(credentialsId: 'rh-build-service-api-key', variable: 'API_KEY')]) {
-        runGroovy('ci/TriggerRedHatBuild.groovy', "'${version}' '${PROJECT_ID}' '${API_KEY}'")
+        string(
+          credentialsId: 'red-hat-scan-registry-password-nexus-repository-manager-operator',
+          variable: 'REGISTRY_PASSWORD'),
+        string(
+          credentialsId: 'red-hat-api-token',
+          variable: 'API_TOKEN'),
+      ]) {
+        sh 'PATH="$PATH:." VERSION=$version ./build_red_hat_image.sh'
       }
     }
+  } finally {
+    sh 'docker logout'
+    sh 'docker system prune -a -f'
+    sh 'git clean -f && git reset --hard origin/main'
   }
-}
-
-def readVersion() {
-  def content = readFile 'build/Dockerfile'
-  for (line in content.split('\n')) {
-    if (line.contains('version=')) {
-      return line.split('=')[1].replaceAll(/[^\d.-]+/, '').trim()
-    }
-  }
-  error 'Could not determine version from build/Dockerfile.'
 }
