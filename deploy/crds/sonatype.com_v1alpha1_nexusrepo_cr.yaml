@@ -22,7 +22,8 @@ spec:
     preStart:
       command: null
     terminationGracePeriodSeconds: 120
-  deploymentStrategy: {}
+  deploymentStrategy:
+    type: Recreate
   ingress:
     annotations: {}
     enabled: false
@@ -39,7 +40,7 @@ spec:
       - name: NEXUS_SECURITY_RANDOMPASSWORD
         value: "false"
     hostAliases: []
-    imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager@sha256:bf4200653ad59c50b87788265b2f12c9da6942413e2487c24e4d5407c44ad598
+    imageName: registry.connect.redhat.com/sonatype/nexus-repository-manager@sha256:af94979b9e02e03c8ec593cbff3b2a41824bfcdc2815441f1e4fb55fca47e95f
     imagePullPolicy: IfNotPresent
     imagePullSecret: ""
     livenessProbe:
