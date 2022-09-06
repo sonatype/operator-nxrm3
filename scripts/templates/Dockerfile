@@ -9,6 +9,14 @@ LABEL name="Nexus Repository Operator" \
       summary="The Nexus Repository Manager with universal support for popular component formats." \
       description="The Nexus Repository Manager with universal support for popular component formats."
 
+USER root
+
+RUN microdnf update -y \
+    && microdnf clean all
+
+# back to helm-operator's user
+USER 1001
+
 # Required Licenses
 COPY licenses /licenses
 
