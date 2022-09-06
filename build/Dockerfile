@@ -14,7 +14,8 @@ USER root
 RUN microdnf update -y \
     && microdnf clean all
 
-USER ${USER_ID}
+# back to helm-operator's user
+USER 1001
 
 # Required Licenses
 COPY licenses /licenses
