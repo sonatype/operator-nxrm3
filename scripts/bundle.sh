@@ -52,7 +52,7 @@ mv bundle.Dockerfile bundle-$latest_version.Dockerfile
 
 # append more labels
 cat >> bundle-$latest_version.Dockerfile <<EOF
-LABEL com.redhat.openshift.versions="v4.8"
+LABEL com.redhat.openshift.versions="v4.10"
 LABEL com.redhat.delivery.backport=true
 LABEL com.redhat.delivery.operator.bundle=true
 EOF
