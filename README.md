@@ -38,7 +38,7 @@ and push your operator image to quay.io to make it available for installation.
       **Service:** example-nexusrepo-sonatype-nexus-service
 9. Visit the new URL shown on the Route page in OpenShift UI.
 
-(*) You can get the tag of Nexus IQ Server Certified Image from the [Red Hat Catalog](https://catalog.redhat.com/software/containers/sonatype/nxrm-operator-bundle/5f7b7a8becb5245089512dd9?container-tabs=gti). And the image id from the **Manifest List Digest**.
+(*) You can get the tag of Nexus Repository Certified Image from the [Red Hat Catalog](https://catalog.redhat.com/software/containers/sonatype/nxrm-operator-bundle/5f7b7a8becb5245089512dd9?container-tabs=gti). And the image id from the **Manifest List Digest**.
   
 ## Uninstall NXRM 3 from a Local Test Cluster
 
