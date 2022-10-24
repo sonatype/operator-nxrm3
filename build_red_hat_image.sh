@@ -38,7 +38,7 @@ IMAGE_TAG="${REPOSITORY}/redhat-isv-containers/${CERT_PROJECT_ID}:${VERSION}"
 AUTHFILE="${HOME}/.docker/config.json"
 
 docker build -f "${DOCKERFILE}" -t "${IMAGE_TAG}" .
-       .
+
 docker login "${REPOSITORY}" \
         -u "${REGISTRY_LOGIN}" \
         --password "${REGISTRY_PASSWORD}"
