@@ -20,34 +20,33 @@
 #   * https://github.com/redhat-openshift-ecosystem/openshift-preflight
 # * environment variables:
 #   * VERSION of the docker image  to build for the red hat registry
-#   * REGISTRY_PASSWORD from red hat config page for image
+#   * REGISTRY_LOGIN from Red Hat config page for image
+#   * REGISTRY_PASSWORD from Red Hat config page for image
 #   * API_TOKEN from red hat token/account page for API access
 
 set -x # log commands as they execute
 set -e # stop execution on the first failed command
 
-IMAGE=nxrm-operator-certified
 DOCKERFILE=build/Dockerfile
 
 # from config/scanning page at red hat
-PROJECT_ID=ospid-7f9c4310-4d85-4c8a-b00f-c5ca472a2b32
-# from url of project at red hat
 CERT_PROJECT_ID=5e8ce8acf2ef89b1acc26c93
+
+REPOSITORY="quay.io"
+IMAGE_TAG="${REPOSITORY}/redhat-isv-containers/${CERT_PROJECT_ID}:${VERSION}"
 
 AUTHFILE="${HOME}/.docker/config.json"
 
-docker build \
-       -f "${DOCKERFILE}" \
-       -t "scan.connect.redhat.com/${PROJECT_ID}/${IMAGE}:${VERSION}" \
-       .
-docker login scan.connect.redhat.com -u unused \
-       --password "${REGISTRY_PASSWORD}"
+docker build -f "${DOCKERFILE}" -t "${IMAGE_TAG}" .
 
-docker push \
-       "scan.connect.redhat.com/${PROJECT_ID}/${IMAGE}:${VERSION}"
+docker login "${REPOSITORY}" \
+        -u "${REGISTRY_LOGIN}" \
+        --password "${REGISTRY_PASSWORD}"
+
+docker push "${IMAGE_TAG}"
 
 preflight check container \
-          "scan.connect.redhat.com/${PROJECT_ID}/${IMAGE}:${VERSION}" \
+          "${IMAGE_TAG}" \
           --docker-config="${AUTHFILE}" \
           --submit \
           --certification-project-id="${CERT_PROJECT_ID}" \
