@@ -34,16 +34,19 @@ CERT_PROJECT_ID=5e8ce8acf2ef89b1acc26c93
 
 REPOSITORY="quay.io"
 IMAGE_TAG="${REPOSITORY}/redhat-isv-containers/${CERT_PROJECT_ID}:${VERSION}"
+IMAGE_LATEST="${REPOSITORY}/redhat-isv-containers/${CERT_PROJECT_ID}:latest"
 
 AUTHFILE="${HOME}/.docker/config.json"
 
 docker build -f "${DOCKERFILE}" -t "${IMAGE_TAG}" .
+docker tag "${IMAGE_TAG}" "${IMAGE_LATEST}"
 
 docker login "${REPOSITORY}" \
         -u "${REGISTRY_LOGIN}" \
         --password "${REGISTRY_PASSWORD}"
 
 docker push "${IMAGE_TAG}"
+docker push "${IMAGE_LATEST}"
 
 preflight check container \
           "${IMAGE_TAG}" \
