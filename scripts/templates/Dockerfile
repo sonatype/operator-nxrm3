@@ -1,5 +1,5 @@
 # {{templateWarning}}
-FROM quay.io/operator-framework/helm-operator:v1.24.1
+FROM quay.io/operator-framework/helm-operator:v1.25.0
 
 # Required OpenShift Labels
 LABEL name="Nexus Repository Operator" \
