@@ -20,6 +20,14 @@ spec:
           # Replace this with the built image name
           image: {{operatorSHA}}
           imagePullPolicy: Always
+          securityContext:
+            allowPrivilegeEscalation: false
+            runAsNonRoot: true
+            seccompProfile:
+              type: RuntimeDefault
+            capabilities:
+              drop:
+                - ALL
           env:
             - name: WATCH_NAMESPACE
               valueFrom:
