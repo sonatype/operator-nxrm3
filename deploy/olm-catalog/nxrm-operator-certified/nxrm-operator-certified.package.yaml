@@ -1,7 +1,7 @@
 # DO NOT MODIFY. This is produced by template.
 ---
 channels:
-  - currentCSV: nxrm-operator-certified.v3.41.1-1
+  - currentCSV: nxrm-operator-certified.v3.43.0-1
     name: stable
 defaultChannel: stable
 packageName: nxrm-operator-certified
