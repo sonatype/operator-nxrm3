@@ -49,4 +49,4 @@ and push your operator image to quay.io to make it available for installation.
 ## Uninstall NXRM 3 from a Local Test Cluster
 
 1. Remove the route in the console.
-3. Uninstall all the descriptors for the operator: `./scripts/uninstall.sh`.
+3. Uninstall all the descriptors for the operator: `./scripts/uninstall.sh`
