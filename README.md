@@ -15,7 +15,7 @@ and push your operator image to quay.io to make it available for installation.
    `./scripts/new_version.sh image <new-operator-version> <cert-app-image-version>`
 
    Get the certified app version from the
-   [NXRM in the Red Hat Catalog](https://catalog.redhat.com/software/containers/sonatype/nexus-repository-manager/594c281c1fbe9847af657690?container-tabs=gti)
+   [NXRM in the Red Hat Catalog](https://catalog.redhat.com/software/containers/sonatype/nexus-repository-manager/594c281c1fbe9847af657690?container-tabs=gti).
 
    Example: `./scripts/new_version.sh image 3.41.1-1 3.41.1-ubi-1`
 
@@ -28,8 +28,8 @@ and push your operator image to quay.io to make it available for installation.
 6. Update the bundle files for the new image:
    ` ./scripts/new_version.sh bundle <new-operator-version> <operator-image-id> <certified-app-image-id>`
    
-   Get the certified app image ID from the 
-   [NXRM in the Red Hat Catalog](https://catalog.redhat.com/software/containers/sonatype/nexus-repository-manager/594c281c1fbe9847af657690?container-tabs=gti)
+   Get the certified app ID URL from the 
+   [NXRM in the Red Hat Catalog](https://catalog.redhat.com/software/containers/sonatype/nexus-repository-manager/594c281c1fbe9847af657690?container-tabs=gti).
 
    Example: `./scripts/new_version.sh bundle 3.41.1-1 quay.io/{quay.io-account}/nxrm-operator-certified:3.41.1-1 registry.connect.redhat.com/sonatype/nexus-repository-manager@sha256:{sha256}` 
 7. Install all the descriptors for the operator to your OpenShift cluster:
