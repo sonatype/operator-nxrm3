@@ -1,6 +1,7 @@
 # Sonatype NXRM 3 Certified Operator
-Red Hat certified OpenShift Operator for installing Sonatype Nexus Repository 
-Manager 3 to an OpenShift cluster.
+
+Red Hat certified OpenShift Operator for installing
+Sonatype Nexus Repository Manager 3 to an OpenShift cluster.
 
 ## Building from Source for Local Development and Testing
 
@@ -13,7 +14,11 @@ and push your operator image to quay.io to make it available for installation.
 3. Generate a new version of the operator image using the templates under test:
    `./scripts/new_version.sh image <new-operator-version> <cert-app-image-version>`
 
-   Example: `./scripts/new_version.sh image 3.41.1-1  3.41.1-1` (*)
+   Get the certified app version from
+   [NXRM in the Red Hat Catalog](https://catalog.redhat.com/software/containers/sonatype/nexus-repository-manager/594c281c1fbe9847af657690?container-tabs=gti).
+
+   Example: `./scripts/new_version.sh image 3.41.1-1 3.41.1-ubi-1`
+
 4. Build and deploy the operator image to your personal quay.io repository:
    1. `docker build . -f build/Dockerfile --tag quay.io/<username>/nxrm-operator-certified:[operator-version]`
    2. `docker login quay.io`
@@ -23,7 +28,10 @@ and push your operator image to quay.io to make it available for installation.
 6. Update the bundle files for the new image:
    ` ./scripts/new_version.sh bundle <new-operator-version> <operator-image-id> <certified-app-image-id>`
 
-   Example: `./scripts/new_version.sh bundle 3.41.1-1 quay.io/{quay.io-account}/nxrm-operator-certified:3.41.1-1 registry.connect.redhat.com/sonatype/nxrm-operator-bundle@sha256:{sha256}` (*)
+   Get the certified app ID URL from
+   [NXRM in the Red Hat Catalog](https://catalog.redhat.com/software/containers/sonatype/nexus-repository-manager/594c281c1fbe9847af657690?container-tabs=gti).
+
+   Example: `./scripts/new_version.sh bundle 3.41.1-1 quay.io/{quay.io-account}/nxrm-operator-certified:3.41.1-1 registry.connect.redhat.com/sonatype/nexus-repository-manager@sha256:{sha256}`
 7. Install all the descriptors for the operator to your OpenShift cluster:
    1. `./scripts/install.sh`
    2. By executing `kubectl get pods` you should see a pod running in Openshift:
@@ -38,9 +46,7 @@ and push your operator image to quay.io to make it available for installation.
       **Service:** example-nexusrepo-sonatype-nexus-service
 9. Visit the new URL shown on the Route page in OpenShift UI.
 
-(*) You can get the tag of Nexus Repository Certified Image from the [Red Hat Catalog](https://catalog.redhat.com/software/containers/sonatype/nxrm-operator-bundle/5f7b7a8becb5245089512dd9?container-tabs=gti). And the image id from the **Manifest List Digest**.
-  
 ## Uninstall NXRM 3 from a Local Test Cluster
 
 1. Remove the route in the console.
-3. Uninstall all the descriptors for the operator: `./scripts/uninstall.sh`.
+3. Uninstall all the descriptors for the operator: `./scripts/uninstall.sh`
