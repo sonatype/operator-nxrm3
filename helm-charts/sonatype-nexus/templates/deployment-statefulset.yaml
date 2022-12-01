@@ -64,8 +64,6 @@ spec:
           imagePullPolicy: {{ .Values.nexus.imagePullPolicy }}
           securityContext:
             allowPrivilegeEscalation: false
-            seccompProfile:
-              type: RuntimeDefault
             capabilities:
               drop:
                 - ALL
