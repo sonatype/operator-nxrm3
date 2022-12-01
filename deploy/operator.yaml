@@ -18,7 +18,7 @@ spec:
       containers:
         - name: nxrm-operator-certified
           # Replace this with the built image name
-          image: registry.connect.redhat.com/sonatype/nxrm-operator-certified@sha256:0fd32ec24c07a0d54f993f08bcfa1fe466cd02a9c018261b1e168fe626f54ab4
+          image: registry.connect.redhat.com/sonatype/nxrm-operator-certified@sha256:428b95eda4eedf960923dc639227e8a51d88e5343f7768182d53b91bab12b79c
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
