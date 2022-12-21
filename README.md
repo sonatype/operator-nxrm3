@@ -45,6 +45,7 @@ and push your operator image to quay.io to make it available for installation.
 
       **Service:** example-nexusrepo-sonatype-nexus-service
 9. Visit the new URL shown on the Route page in OpenShift UI.
+10. Default credentials are `admin/admin123`.
 
 ## Uninstall NXRM 3 from a Local Test Cluster
 
