@@ -132,7 +132,7 @@ metadata:
       and build artifacts across your DevOps pipeline.
     containerImage: {{operatorSHA}}
     repository: https://github.com/sonatype/operator-nxrm3
-    createdAt: 2020-07-17
+    createdAt: 2023-07-14
     support: Sonatype
     certified: "true"
     olm.skipRange: "<{{operatorVersion}}"
