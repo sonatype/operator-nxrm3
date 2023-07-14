@@ -1,4 +1,4 @@
-# {{templateWarning}}
+# DO NOT MODIFY. This is produced by template.
 ---
 apiVersion: operators.coreos.com/v1alpha1
 kind: ClusterServiceVersion
@@ -58,7 +58,7 @@ metadata:
                 }
               ],
               "hostAliases": [],
-              "imageName": "{{certAppSHA}}",
+              "imageName": "registry.connect.redhat.com/sonatype/nexus-repository-manager@sha256:0ea459666410d2bbeaf084f3474d3af96407a0f8a8229043257a5f25c7b26085",
               "imagePullPolicy": "IfNotPresent",
               "imagePullSecret": "",
               "livenessProbe": {
@@ -130,13 +130,13 @@ metadata:
     description: |-
       Nexus Repository is the central source of control to efficiently manage all binaries
       and build artifacts across your DevOps pipeline.
-    containerImage: {{operatorSHA}}
+    containerImage: registry.connect.redhat.com/sonatype/nxrm-operator-certified@sha256:2ff1738e961e6f4f883c10d421a6730237eefbcc052dfb28623395e42638e4ca
     repository: https://github.com/sonatype/operator-nxrm3
     createdAt: 2023-07-14
     support: Sonatype
     certified: "true"
-    olm.skipRange: "<{{operatorVersion}}"
-  name: nxrm-operator-certified.v{{operatorVersion}}
+    olm.skipRange: "<3.57.0-1"
+  name: nxrm-operator-certified.v3.57.0-1
   namespace: placeholder
 spec:
   apiservicedefinitions: {}
@@ -326,8 +326,8 @@ spec:
                       - name: OPERATOR_NAME
                         value: nxrm-operator-certified
                       - name: RELATED_IMAGE_NEXUS
-                        value: {{certAppSHA}}
-                    image: {{operatorSHA}}
+                        value: registry.connect.redhat.com/sonatype/nexus-repository-manager@sha256:0ea459666410d2bbeaf084f3474d3af96407a0f8a8229043257a5f25c7b26085
+                    image: registry.connect.redhat.com/sonatype/nxrm-operator-certified@sha256:2ff1738e961e6f4f883c10d421a6730237eefbcc052dfb28623395e42638e4ca
                     imagePullPolicy: Always
                     name: nxrm-operator-certified
                     resources: {}
@@ -429,4 +429,4 @@ spec:
   maturity: stable
   provider:
     name: Sonatype
-  version: {{operatorVersion}}
+  version: 3.57.0-1
