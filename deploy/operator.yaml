@@ -18,7 +18,7 @@ spec:
       containers:
         - name: nxrm-operator-certified
           # Replace this with the built image name
-          image: registry.connect.redhat.com/sonatype/nxrm-operator-certified@sha256:6c07c254e166fc21a442ddb6509384aac008ea9723fb0042006bbc824b7f3d66
+          image: registry.connect.redhat.com/sonatype/nxrm-operator-certified@sha256:2ff1738e961e6f4f883c10d421a6730237eefbcc052dfb28623395e42638e4ca
           imagePullPolicy: Always
           securityContext:
             allowPrivilegeEscalation: false
@@ -40,4 +40,4 @@ spec:
             - name: OPERATOR_NAME
               value: "nxrm-operator-certified"
             - name: RELATED_IMAGE_NEXUS
-              value: registry.connect.redhat.com/sonatype/nexus-repository-manager@sha256:0a537bf191cc09fec0787300c7b4de7713afcb00f62774b7a4e5578be6b6ff0e
+              value: registry.connect.redhat.com/sonatype/nexus-repository-manager@sha256:0ea459666410d2bbeaf084f3474d3af96407a0f8a8229043257a5f25c7b26085
