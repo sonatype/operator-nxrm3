@@ -139,6 +139,7 @@ metadata:
   name: nxrm-operator-certified.v{{operatorVersion}}
   namespace: placeholder
 spec:
+  relatedImages: {}
   apiservicedefinitions: {}
   customresourcedefinitions:
     owned:
