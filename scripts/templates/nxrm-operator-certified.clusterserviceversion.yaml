@@ -139,7 +139,11 @@ metadata:
   name: nxrm-operator-certified.v{{operatorVersion}}
   namespace: placeholder
 spec:
-  relatedImages: {}
+  relatedImages:
+    - name: nxrm-operator-certified
+      image: {{operatorSHA}}
+    - name: nexus-repository-manager
+      image: {{certAppSHA}}
   apiservicedefinitions: {}
   customresourcedefinitions:
     owned:
