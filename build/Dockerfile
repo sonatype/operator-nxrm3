@@ -1,10 +1,10 @@
 # DO NOT MODIFY. This is produced by template.
-FROM quay.io/operator-framework/helm-operator:v1.26.0
+FROM quay.io/operator-framework/helm-operator@sha256:0e77ef25f57061d9205f82c67b58f084a0e6aa7598d29bc7de7496773d05fa6b
 
 # Required OpenShift Labels
 LABEL name="Nexus Repository Operator" \
       vendor="Sonatype" \
-      version="3.57.0" \
+      version="3.58.0" \
       release="1" \
       summary="The Nexus Repository Manager with universal support for popular component formats." \
       description="The Nexus Repository Manager with universal support for popular component formats."
