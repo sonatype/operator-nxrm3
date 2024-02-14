@@ -87,6 +87,12 @@ spec:
               name: nexus-docker-g
             - containerPort: {{ .Values.nexus.nexusPort }}
               name: nexus-http
+{{- if .Values.service.enabled -}}
+{{- range .Values.service.ports }}
+            - containerPort: {{ .targetPort }}
+              name: {{ .name }}
+{{- end}}
+{{- end}}
           livenessProbe:
             httpGet:
               path: {{ .Values.nexus.livenessProbe.path }}
